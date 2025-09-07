@@ -57,6 +57,7 @@ import Mapcy from "../img/mockupmapcy/mapcy.png";
 import Mapcy1 from "../img/mockupmapcy/mapcy1.png";
 import Mapcy2 from "../img/mockupmapcy/mapcy2.png";
 import Mapcy3 from "../img/mockupmapcy/mapcy3.png";
+
 const projects = [
   {
     id: 1,

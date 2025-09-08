@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Pauline from "../../assets/img/paulineholm485x485.png";
+import PholmTransp from "../../assets/img/pholmtransp.png";
 import Button from "../common/Button";
 import { motion } from "framer-motion";
 const WelcomeStyle = styled.section`
@@ -88,10 +89,11 @@ const Welcome = () => {
       </motion.div>
       <div className="welcomeRight">
         <article>
-          <h1>Hej, my name is Pauline 🙋🏻‍♀️</h1>
+          <h1>Pauline Holm</h1>
           <h2>I am freshly baked Frontend Web Developer</h2>
           <h3>and it is really nice to see you on my website!</h3>
         </article>
+        <img src={PholmTransp} alt="logo PH" />
         <div className="btnflex">
           <Button
             text="resume"

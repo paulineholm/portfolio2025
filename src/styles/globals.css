@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #1c1c1c;
+  --color-thina: #d0ba98;
+  --color-negev: #f5f1e7;
+  --color-fresh-lime: #e2ff99;
+}
+
+@layer base {
+  /* Font faces v1 */
+  @font-face {
+    font-family: "Roboto Regular";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Roboto Light";
+    src: url("../fonts/Roboto-Light.ttf") format("truetype");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Roboto Thin";
+    src: url("../fonts/Roboto-Thin.ttf") format("truetype");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Lora Regular";
+    src: url("../fonts/Lora-Regular.ttf") format("truetype");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Lora Medium";
+    src: url("../fonts/Lora-Medium.ttf") format("truetype");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Roboto Italic";
+    src: url("../fonts/Roboto-Italic.ttf") format("truetype");
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Roboto Light Italic";
+    src: url("../fonts/Roboto-LightItalic.ttf") format("truetype");
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Roboto Thin Italic";
+    src: url("../fonts/Roboto-ThinItalic.ttf") format("truetype");
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Lora Italic";
+    src: url("../fonts/Lora-Italic.ttf") format("truetype");
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Lora Medium Italic";
+    src: url("../fonts/Lora-MediumItalic.ttf") format("truetype");
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Gambarino";
+    src: url("../fonts/Gambarino-Regular.ttf") format("truetype");
+    font-style: normal;
+  }
+  /* Font faces v2 */
+  @font-face {
+    font-family: "Melodrama";
+    src: url("../fonts/Melodrama-Variable.ttf") format("truetype");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Nunito";
+    src: url("../fonts/Nunito-Variable.ttf") format("truetype");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Nunito Italic";
+    src: url("../fonts/Nunito-VariableItalic.ttf") format("truetype");
+    font-style: italic;
+  }
+
+  :root {
+    --usafa-blue: #2b50aa;
+    --cherry-blossom-pink: #da627d;
+    --shimmering-blush: #ffa5ab;
+    --teal: #2f9d99;
+    --baby-powder: #fdfff7;
+    --body-text: 15px;
+    --body-height: 25px;
+    --small-head: 16px;
+    --small-line-height: 1.1;
+    --medium-head: 24px;
+    --medium-line-height: 1.1;
+    --regular-head: 36px;
+    --regular-spacing: 0.075em;
+    --regular-line-height: 1.1;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  html {
+    font-size: 15px;
+    color: #272727;
+    background-color: var(--color-negev);
+    font-family: "Roboto Regular", sans-serif;
+  }
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h1 {
+    font-size: 36px;
+    letter-spacing: 0.075em;
+    line-height: 1.1;
+    color: var(--color-midnight);
+    line-height: 1.4;
+    font-family: "Gambarino", serif;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 1.1;
+    color: var(--color-fresh-lime);
+    line-height: 1.5;
+    font-family: "Roboto Light", sans-serif;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 1.1;
+    color: var(--color-midnight);
+    line-height: 1.5;
+    font-family: "Roboto Light", sans-serif;
+  }
+}

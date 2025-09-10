@@ -61,7 +61,7 @@ import Mapcy3 from "../img/mockupmapcy/mapcy3.png";
 const projects = [
   {
     id: 1,
-    name: "CPH Night Club",
+    title: "CPH Night Club",
     head: "Final Exam - simple website with focus on animations",
     desc: "Final Exam at school, a simple website for a night club with lots of animations. Users can see many relevant details regarding the clubs offer, see the gallery, testimonials as well as the newest blogposts and collaborate on that with other users. Besides, the contact info (and contact formular) are provided. Not deployed at it was only working locally with school-provided API.",
     stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
@@ -73,7 +73,7 @@ const projects = [
   },
   {
     id: 2,
-    name: "Landrup Dans",
+    title: "Landrup Dans",
     head: "(Pre-final) Exam, an app for a dance school",
     desc: "Pre-exam (final), an app for a dance school (school project). The app is supposed to give users and teachers overview at activities at school and all important details. It gives possibility to sign for activities. Not deployed at it was only working locally with school-provided API.",
     stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
@@ -85,7 +85,7 @@ const projects = [
   },
   {
     id: 3,
-    name: "Smart Lights (Hue)",
+    title: "Smart Lights (Hue)",
     head: "Smartlights App based on Philips Hue API (school project)",
     desc: "This app is a school project - where focus was on object oriented programming. Its purpose was to communicate with the physical lamps provided by school (Philips Hue bulbs) via the bridge and Philips Hue API for developers. Not deployed as it is only working on the local bridge and its API.",
     stack: [<FaReact />, <GiWomanElfFace />, <SiReactrouter />],
@@ -97,7 +97,7 @@ const projects = [
   },
   {
     id: 4,
-    name: "The Proud Tracker",
+    title: "The Proud Tracker",
     head: "Small progressive web app with COVID-19 numbers (school project)",
     desc: "The Proud Tracker progressive web app is a small school project. This tracker gives users overview over the newest COVID-19 numbers worldwide and comes with push notifications.",
     stack: [<FaReact />, <GiWomanElfFace />, <SiReactrouter />],
@@ -110,7 +110,7 @@ const projects = [
   },
   {
     id: 5,
-    name: "iPlayMusic",
+    title: "iPlayMusic",
     head: "Music Player App based on Spotify API (school-project)",
     desc: "A music app, that uses Spotify API to give user overview at their favorite music: playlists, albums, songs. Provided with light and dark theme, you must login with your Spotify account to access full functionality.",
     stack: [<FaReact />, <GiWomanElfFace />, <SiReactrouter />],
@@ -123,7 +123,7 @@ const projects = [
   },
   {
     id: 6,
-    name: "News Box",
+    title: "News Box",
     head: "News Box with Ny Times API (school project)",
     desc: "A news app, that uses New York Times API to give user overview at the news.",
     stack: [<FaHtml5 />, <FaSass />, <FaJsSquare />, <FaGulp />],
@@ -136,7 +136,7 @@ const projects = [
   },
   {
     id: 7,
-    name: "Portfolio 2020",
+    title: "Portfolio 2020",
     head: "My first portfolio from 2020",
     desc: "This portfolio was made using HTML, CSS and basic JavaScript only. It was when I just started on Web developer education at Roskilde Technical College.",
     stack: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare />],
@@ -149,7 +149,7 @@ const projects = [
   },
   {
     id: 8,
-    name: "Gatsby and Style",
+    title: "Gatsby and Style",
     head: "Simple website made with Gatsby (school project)",
     desc: "Simple website made for a school project - focus on Gatsby and Styled Components, as well as color theory.",
     stack: [<SiGatsby />, <SiStyledcomponents />],
@@ -162,9 +162,35 @@ const projects = [
   },
   {
     id: 9,
-    name: "Mapcy",
+    title: "Mapcy",
     head: "Mapcy - Sustainable Tourist Guide (school project)",
     desc: "Mock-up for a school project, where we were asked to improve an existing concept of Mapcy. Based on conducted research, we have decided to add 'Fun facts' and 'Green events', which have met a positive feedback from our Stakeholder Oana.",
+    stack: [<SiFigma />],
+    link: "#",
+    github: "#",
+    date: "October 2022",
+    img: Mapcy,
+    mockups: [Mapcy3, Mapcy2, Mapcy1],
+    headimg: Mapcy,
+  },
+  {
+    id: 10,
+    title: "Cloud Migration",
+    head: "Mapcy - Sustainable Tourist Guide (school project)",
+    desc: "Mock-up for a school project, where we were asked to improve an existing concept of Mapcy. Based on conducted research, we have decided to add 'Fun facts' and 'Green events', which have met a positive feedback from our Stakeholder Oana.",
+    stack: [<SiFigma />],
+    link: "#",
+    github: "#",
+    date: "October 2022",
+    img: Mapcy,
+    mockups: [Mapcy3, Mapcy2, Mapcy1],
+    headimg: Mapcy,
+  },
+  {
+    id: 11,
+    title: "GHA Automatisations",
+    head: "Cloud Migration (school project)",
+    desc: "Mock-up for a school project, where we were asked to improve an existing concept of Cloud Migration. Based on conducted research, we have decided to add 'Fun facts' and 'Green events', which have met a positive feedback from our Stakeholder Oana.",
     stack: [<SiFigma />],
     link: "#",
     github: "#",

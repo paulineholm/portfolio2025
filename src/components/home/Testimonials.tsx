@@ -1,67 +1,43 @@
-import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 import SectionHead from "./SectionHead";
 import testimonials from "../../assets/data/testimonials";
 import { FaLinkedinIn } from "react-icons/fa";
-const TestimonialsStyle = styled.section`
-  width: 100vw;
-  height: 38vh;
-  padding: 4vh 15vw;
-  text-align: center;
-
-  article {
-    line-height: 1.7;
-    p {
-      padding: 0.5vh 6vw;
-    }
-    a {
-      color: var(--usafa-blue);
-      line-height: 3;
-      :hover {
-        color: var(--shimmering-blush);
-      }
-      svg {
-        margin: -2px 7px;
-        font-size: 0.85rem;
-      }
-    }
-  }
-  @media only screen and (max-width: 768px) {
-    //mobile&tablet
-    height: 65vh;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 1100px) {
-    //tablet
-    padding: 2vh 2vw;
-    height: 35vh;
-  }
-`;
 
 const Testimonials = () => {
+  console.log(testimonials);
   return (
-    <TestimonialsStyle>
-      <SectionHead text="people say about me..." cherry />
+    <section className="w-screen h-[38vh] px-[15vw] py-[4vh] text-center md:h-[35vh] md:px-[2vw] md:py-[2vh] sm:h-[65vh] mb-[5dvh]">
+      <SectionHead text="people say about me..." />
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
         spaceBetween={0}
         slidesPerView={1}
+        loop={true}
       >
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.id}>
-            <article>
-              <p>{testimonial.text}</p>
-              <a href={testimonial.linkedin}>
-                <FaLinkedinIn />
+            <article className="leading-[1.7]">
+              <p className="py-[0.5vh] px-[6vw]">{testimonial.text}</p>
+              <a
+                href={testimonial.linkedin}
+                className="text-secondary leading-[3] hover:text-white"
+              >
                 {testimonial.name}
               </a>
             </article>
           </SwiperSlide>
         ))}
       </Swiper>
-    </TestimonialsStyle>
+      <button className="btn bg-[#0072b1] hover:bg-[#0072b1]/80 text-primary border-none my-5">
+        <FaLinkedinIn className="-mt-[2px] mx-[7px] text-[0.85rem]" />
+        <a href="https://www.linkedin.com/in/paulineholm/">
+          Visit my LinkedIn profile
+        </a>
+      </button>
+    </section>
   );
 };
 

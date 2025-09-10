@@ -7,9 +7,9 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Cristina Sevcenco",
-    text: "An 'open-minded' person, strong, skilled and dedicated, especially when it comes to social interaction and motivation. With an outgoing personality, Pauline can very easily take the best out of any situation she finds herself in.",
-    linkedin: "https://www.linkedin.com/in/cristina-sevcenco-b10760152/",
+    name: "Ole Sandbæk Jørgensen",
+    text: "Pauline brings a lot of energy from the first time you meet her, she is not shy, but maybe an extroverted introvert, she is curious about a lot of things and that comes in handy when as a student developer you are faced with legacy systems, package updates that deprecates functions, weird functionality and behaviours :)...",
+    linkedin: "https://www.linkedin.com/in/jorgensen/",
   },
   {
     id: 3,
@@ -22,6 +22,12 @@ const testimonials = [
     name: "Emily Bendiksen",
     text: "(...) From the moment she joined our team, it was clear she was a true asset - being a newly formed role, she not only expertly filled it, but also shaped it with processes and ideas for the future...",
     linkedin: "https://www.linkedin.com/in/emily-bendiksen/",
+  },
+  {
+    id: 5,
+    name: "Julieta Calbet",
+    text: "(...) One of Pauline's standout qualities is her proactive approach to involving her colleagues and keeping everyone updated on the latest trends. Her enthusiasm for staying current in the ever-evolving field of front-end development is truly commendable...",
+    linkedin: "https://www.linkedin.com/in/julieta-calbet/",
   },
 ];
 

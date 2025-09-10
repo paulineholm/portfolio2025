@@ -1,19 +1,18 @@
-import styled from "styled-components";
-import RecentProjects from "../components/home/RecentProjects";
-import ShortAbout from "../components/home/ShortAbout";
-import Stack from "../components/home/Stack";
+import EngineeringHighlights from "../components/home/EngineeringHighlights";
+import TechStack from "../components/home/TechStack";
 import Testimonials from "../components/home/Testimonials";
-import Welcome from "../components/home/Welcome";
-const HomeStyles = styled.main``;
+import { Hero } from "../components/home/Hero";
+import Divider from "../components/common/Divider";
 const Home = () => {
   return (
-    <HomeStyles>
-      <Welcome />
-      <ShortAbout />
-      <Stack />
-      <RecentProjects />
+    <>
+      <Hero />
+      <TechStack />
+      <Divider size="sm" color="thina" />
+      <EngineeringHighlights />
+      <Divider size="sm" color="thina" />
       <Testimonials />
-    </HomeStyles>
+    </>
   );
 };
 

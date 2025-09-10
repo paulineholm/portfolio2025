@@ -1,26 +1,24 @@
-import styled from "styled-components";
-const SectionHeadStyle = styled.h2`
-  color: ${(props) =>
-    props.cherry
-      ? "var(--cherry-blossom-pink)"
-      : props.blue
-      ? "var(--usafa-blue)"
-      : props.teal
-      ? "var(--teal)"
-      : "var(--shimmering-blush)"};
-  text-align: center;
-  padding: 1.5rem;
-`;
-const SectionHead = ({
-  text = "section head",
-  cherry = false,
-  teal = false,
-  blue = false,
+import React from "react";
+
+type SectionHeadColor = "midnight" | "thina" | "negev" | "freshLime";
+
+interface SectionHeadProps {
+  text?: string;
+  color?: SectionHeadColor;
+}
+
+const colorStyles = (color: SectionHeadColor): React.CSSProperties => ({
+  color: `var(--color-${color})`,
+});
+
+const SectionHead: React.FC<SectionHeadProps> = ({
+  text = "",
+  color = "midnight",
 }) => {
   return (
-    <SectionHeadStyle cherry={cherry} teal={teal} blue={blue}>
+    <h2 className="text-center py-6" style={colorStyles(color)}>
       {text}
-    </SectionHeadStyle>
+    </h2>
   );
 };
 

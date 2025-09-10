@@ -2,12 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 @import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(98% 0.003 247.858);
+  --color-base-200: oklch(96% 0.007 247.896);
+  --color-base-300: oklch(92% 0.013 255.508);
+  --color-base-content: oklch(20% 0.042 265.755);
+  --color-primary: #f5f1e7;
+  --color-primary-content: #1c1c1c;
+  --color-secondary: #d0ba98;
+  --color-secondary-content: #1c1c1c;
+  --color-accent: #e2ff99;
+  --color-accent-content: oklch(55% 0.027 264.364);
+  --color-neutral: #1c1c1c;
+  --color-neutral-content: #f5f1e7;
+  --color-info: #da627d;
+  --color-info-content: oklch(98% 0.003 247.858);
+  --color-success: oklch(64% 0.2 131.684);
+  --color-success-content: oklch(98% 0.031 120.757);
+  --color-warning: oklch(68% 0.162 75.834);
+  --color-warning-content: oklch(98% 0.026 102.212);
+  --color-error: oklch(57% 0.245 27.325);
+  --color-error-content: oklch(97% 0.013 17.38);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+}
 
 @theme {
   --color-midnight: #1c1c1c;
   --color-thina: #d0ba98;
   --color-negev: #f5f1e7;
-  --color-fresh-lime: #e2ff99;
+  --color-freshLime: #e2ff99;
 }
 
 @layer base {
@@ -85,11 +120,6 @@
   }
 
   :root {
-    --usafa-blue: #2b50aa;
-    --cherry-blossom-pink: #da627d;
-    --shimmering-blush: #ffa5ab;
-    --teal: #2f9d99;
-    --baby-powder: #fdfff7;
     --body-text: 15px;
     --body-height: 25px;
     --small-head: 16px;
@@ -99,6 +129,14 @@
     --regular-head: 36px;
     --regular-spacing: 0.075em;
     --regular-line-height: 1.1;
+    font-size: 16px;
+    color: #272727 !important;
+    background-color: var(--color-negev) !important;
+    font-family: "Nunito" !important;
+    --color-midnight: #1c1c1c;
+    --color-thina: #d0ba98;
+    --color-negev: #f5f1e7;
+    --color-freshLime: #e2ff99;
   }
 
   * {
@@ -112,10 +150,10 @@
   }
 
   html {
-    font-size: 15px;
+    font-size: 16px;
     color: #272727;
     background-color: var(--color-negev);
-    font-family: "Roboto Regular", sans-serif;
+    font-family: "Nunito";
   }
 
   ul,
@@ -133,15 +171,17 @@
     line-height: 1.1;
     color: var(--color-midnight);
     line-height: 1.4;
-    font-family: "Gambarino", serif;
+    font-family: "Melodrama";
   }
 
   h2 {
     font-size: 24px;
+    font-weight: 350;
+    letter-spacing: 0.025em;
     line-height: 1.1;
-    color: var(--color-fresh-lime);
+    color: var(--color-freshLime);
     line-height: 1.5;
-    font-family: "Roboto Light", sans-serif;
+    font-family: "Nunito";
   }
 
   h3 {
@@ -151,4 +191,49 @@
     line-height: 1.5;
     font-family: "Roboto Light", sans-serif;
   }
+}
+
+.animate-slideInRight {
+  animation: slideIn-right 2s ease-out forwards;
+}
+
+@keyframes slideIn-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideLeft {
+  animation: slideIn-left 0.8s ease-out forwards;
+}
+
+.animate-slideRight {
+  animation: slideIn-right 0.8s ease-out forwards;
 }

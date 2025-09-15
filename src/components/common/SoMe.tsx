@@ -4,12 +4,6 @@ const SoMe = () => {
   return (
     <div className="flex justify-center gap-4">
       <a
-        href="https://www.instagram.com/frk.holminka/"
-        className="hover:text-accent"
-      >
-        <FaInstagram />
-      </a>
-      <a
         href="https://www.linkedin.com/in/paulineholm/"
         className="hover:text-accent"
       >

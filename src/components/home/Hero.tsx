@@ -45,7 +45,7 @@ export const Hero = () => {
           ref={img}
           src={HeroImg}
           alt="Pauline Holm"
-          className="w-[36.5dvw] h-auto opacity-0"
+          className="w-[38dvw] h-auto opacity-0 transition-opacity duration-1500"
         />
       </div>
 

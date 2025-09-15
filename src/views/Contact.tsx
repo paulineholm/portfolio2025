@@ -61,11 +61,8 @@ const Contact = () => {
         </p>
         <br />
         <p className="links">
-          <a href="mailto:frk.paulineholm@gmail.com">
-            frk.paulineholm@gmail.com
-          </a>{" "}
-          / <a href="https://www.linkedin.com/in/paulineholm/">LinkedIn</a> /{" "}
-          <a href="https://www.instagram.com/frk.holminka/">Instagram</a>
+          <a href="mailto:pholm@tuta.io">pholm@tuta.io</a> /{" "}
+          <a href="https://www.linkedin.com/in/paulineholm/">LinkedIn</a>
         </p>
       </div>
     </ContactStyles>

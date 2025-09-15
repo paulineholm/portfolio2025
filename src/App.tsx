@@ -12,7 +12,7 @@ import Error from "./views/Error";
 
 function App() {
   const [resViewport, setResViewport] = useState(window.innerWidth < 1200);
-  //console.log(mobileViewport);
+  //console.log(resViewport);
   //mobile&tablet
   const updateViewport = () => {
     setResViewport(window.innerWidth < 1200);

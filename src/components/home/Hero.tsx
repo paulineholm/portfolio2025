@@ -63,7 +63,7 @@ export const Hero = () => {
           and user-friendly digital experiences
         </p>
         <a
-          href="https://drive.google.com/file/d/16T2_1vQLReuqni9_ghEalk2pfmaTrI0e/view?usp=sharing"
+          href="https://drive.google.com/file/d/1ZPTT8bUznylqtvIqSltd1-q346UOtbxD/view?usp=share_link"
           className="mt-25 font-serif text-[1.5dvw] text-[var(--color-thina)] hover:text-black transition-colors"
         >
           &lt;resume /&gt;

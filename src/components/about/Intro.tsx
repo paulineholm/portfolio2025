@@ -26,7 +26,7 @@ const Intro = () => {
       />
       <div
         ref={bgRef}
-        className="absolute mt-5 ml-5 top-0 right-0 w-8/12 h-screen bg-[var(--color-thina)] opacity-0"
+        className="absolute mt-[2.5dvh] ml-5 top-0 right-0 w-8/12 h-screen bg-[var(--color-thina)] opacity-0"
       />
       <div ref={contentRef} className="opacity-0 flex-1 z-10">
         <article className="leading-normal m-[15dvh]">

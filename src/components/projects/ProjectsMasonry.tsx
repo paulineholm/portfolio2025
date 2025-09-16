@@ -1,129 +1,68 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import projects from "../../assets/data/projects";
 import Masonry from "react-masonry-css";
-const ProjectMasonryStyle = styled.main`
-  .my-masonry-grid {
-    padding: 4vh 4vw;
-    display: flex;
-    width: 100vw;
-  }
-  .my-masonry-grid_column {
-    background-clip: padding-box;
-  }
-  .overlayContainer {
-    position: relative;
-    margin: 2.7vh 0.7vw;
-    img {
-      border-radius: 10px;
-      width: 40vw;
-      height: 40vh;
-    }
-  }
-  .overlay {
-    color: white;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: 0.5s ease;
-    background-color: #fbaec0e6;
-    border-radius: 10px;
-  }
-  .overlayContainer:hover .overlay {
-    opacity: 1;
-  }
-  .overlayText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    :hover {
-      color: var(--teal);
-    }
-    p {
-      font-weight: 700;
-      letter-spacing: 2px;
-      font-size: 1.2rem;
-      font-family: "Roboto Light";
-    }
-    svg {
-      font-size: 3rem;
-      padding: 5px;
-    }
-  }
-  @media only screen and (max-width: 768px) {
-    //mobile
-    .overlayContainer {
-      margin: 4.5vh 2vw;
-      img {
-        border-radius: 10px;
-        width: 100vw;
-      }
-    }
-  }
-  @media only screen and (max-width: 900px) {
-    //tablet
-    .overlayContainer {
-      margin: 1vh 1vw;
-      img {
-        border-radius: 10px;
-        width: 90vw;
-      }
-    }
-    .my-masonry-grid {
-      padding: 2vh 2vw;
-      display: flex;
-    }
-  }
-  @media only screen and (min-width: 900px) and (max-width: 1100px) {
-    //tablet horizontally
-    .overlayContainer {
-      margin: 1vh 1vw;
-      img {
-        border-radius: 10px;
-        width: 45vw;
-      }
-    }
-    .my-masonry-grid {
-      padding: 2vh 2vw;
-      display: flex;
-    }
-  }
-`;
+
 const breakpointColumnsObj = {
   default: 4,
   1100: 3,
   900: 2,
   500: 1,
 };
+
 const ProjectsMasonry = () => {
   return (
-    <ProjectMasonryStyle>
+    <main>
       <Masonry
         breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
+        className="p-[4vh_4vw] flex w-screen"
+        columnClassName="!flex flex-col"
       >
         {projects.map((project) => (
-          <div key={project.id} className="overlayContainer">
-            <img src={project.img} alt={project.name} />
-            <Link to={`/project/${project.id}`} className="overlay">
-              <article className="overlayText">
-                <p>{project.name}</p>
-                <br />
-                <span>{project.stack}</span>
+          <div key={project.id} className="relative mx-[0.8dvw] my-[1.5dvh]">
+            <img
+              src={project.img}
+              alt={project.title}
+              className="rounded-[10px] w-[40vw] h-[40vh] object-cover
+                       md:w-[90vw] lg:w-[45vw]
+                       sm:w-full"
+            />
+            <Link
+              to={`/project/${project.id}`}
+              className="absolute inset-0 opacity-0 hover:opacity-75
+           transition-opacity duration-500 bg-[var(--color-midnight)]
+           rounded-[10px] p-4 flex flex-col justify-between"
+            >
+              <div className="flex flex-row justify-between">
+                <div className="text-[var(--color-negev)] text-left text-sm">
+                  {project.date}
+                </div>
+                <p className="text-[var(--color-negev)] text-sm [writing-mode:vertical-rl] transform rotate-180 text-right">
+                  {project.stackTxt}
+                </p>
+              </div>
+
+              <article
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+             text-[2rem] text-[var(--color-negev)] hover:text-[var(--color-thina)]"
+              >
+                <p className="font-['Melodrama'] text-center">
+                  {project.title}
+                </p>
               </article>
+
+              <div className="flex flex-row justify-between items-end">
+                <span className="flex flex-row text-[var(--color-negev)] text-2xl">
+                  {project.stack}
+                </span>
+                <div className="text-[var(--color-negev)] text-right text-sm">
+                  {project.meta}
+                </div>
+              </div>
             </Link>
           </div>
         ))}
       </Masonry>
-    </ProjectMasonryStyle>
+    </main>
   );
 };
 

@@ -22,7 +22,7 @@ export const Hero = () => {
     <section className="relative min-h-screen overflow-hidden flex items-center">
       <div
         ref={topBar}
-        className="absolute top-0 left-0 w-full h-[45dvh] bg-[var(--color-thina)] m-5 opacity-0"
+        className="absolute top-0 left-0 w-full h-[45dvh] bg-[var(--color-thina)] m-[2.5dvh] opacity-0"
       />
       <p
         ref={subTitle}

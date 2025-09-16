@@ -8,6 +8,7 @@ const Projects = () => {
   useEffect(() => {
     addAnimation(bgRef.current, "animate-slideInRight", 0);
   }, []);
+
   return (
     <div className="relative min-h-screen">
       <div

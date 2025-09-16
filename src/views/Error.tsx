@@ -1,37 +1,22 @@
-import styled from "styled-components";
 import ErrorImg from "../assets/img/error.jpeg";
-const ErrorStyle = styled.main`
-  display: flex;
-  padding: 5vh 10vw;
-  img {
-    width: 30vw;
-    justify-content: center;
-    border-radius: 5px;
-    border: 2px solid var(--shimmering-blush);
-  }
-  p {
-    width: 50vw;
-    padding: 30vh 2vw;
-    text-align: center;
-    line-height: 2.3;
-    a {
-      color: var(--cherry-blossom-pink);
-    }
-  }
-`;
+
 const Error = () => {
   return (
-    <ErrorStyle>
-      <img src={ErrorImg} alt="Error, wrong path" />
-      <p>
+    <main className="flex p-[5vh] px-[10vw]">
+      <img
+        src={ErrorImg}
+        alt="Error, wrong path"
+        className="w-[30vw] justify-center rounded border-2 border-[var(--color-thina)]"
+      />
+      <p className="w-[50vw] py-[30vh] px-[2vw] text-center leading-[2.3]">
         Uuups, it is a wrong path!
         <br />
         Come back{" "}
-        <a href="/">
+        <a href="/" className="text-[var(--color-thina)] hover:underline">
           <b>home</b>
         </a>
       </p>
-    </ErrorStyle>
+    </main>
   );
 };
 

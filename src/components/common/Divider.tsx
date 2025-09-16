@@ -10,7 +10,7 @@ interface DividerProps {
 }
 
 const sizeClassMap: Record<DividerSize, string> = {
-  sm: "h-[1.5px]",
+  sm: "h-[1px]",
   md: "h-[2px]",
   lg: "h-[3px]",
 };

@@ -4,7 +4,7 @@ const NavMenu = () => {
   return (
     <nav
       className="
-        absolute top-0 left-0 w-full h-[12vh] flex items-center z-20
+        absolute top-0 left-0 w-full min-h-[12vh] flex items-center z-20
         bg-transparent justify-end
       "
     >

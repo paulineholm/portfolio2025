@@ -1,117 +1,94 @@
-import styled from "styled-components";
-import { Chrono } from "react-chrono";
-import { useState, useEffect } from "react";
-const TimeLineStyle = styled.section`
-  background: var(--shimmering-blush);
-  width: 100vw;
-  padding-left: 4vw;
-  padding-right:4vw;
-  text-align: center;
-  color: white;
-  line-height: 1.5;
-  .horizontal{
-    bottom:none;
-    left:none;
-    top:0;
-  }
-  #timeline-main-wrapper{
-    height:25vh;
-  }
-  .timeline-controls{
-    display:none ;
-  }
-  #react-chrono-timeline{
-    display:none;
-  }
-  .timeline-horizontal-container{
-    width:90vw;
-    justify-content:space-evenly;
-  }
-  .timeline-item-title{
-    margin-top:4rem;
-    font-weight:300;
-    font-size:1rem;
-    font-family:"Roboto Light";
-  }
-  }
-  p{
-    font-weight: 700;
-    padding-bottom:1.5rem;
-    a{
-      color:var(--usafa-blue);
-      :hover{
-        color:var(--cherry-blossom-pink);
-      }
-    }
-  }
-  @media only screen and (max-width: 1200px) {
-    //mobile&tablet
-    .divMobile{
-      padding: 2.5rem;
-      font-family:"Roboto Light";
-    }
-  }
-`;
-const TimeLine = () => {
-  const items = [
-    {
-      title: "May 2016: High-school graduation 🎓",
-    },
-    {
-      title: "June 2016: Moving to Denmark 🇩🇰",
-    },
-    {
-      title: "January 2020: PBA in Innovation and Entrepreneurship 💼",
-    },
-    {
-      title: "March 2022: Educated as Web developer 👩‍💻",
-    },
-    {
-      title: "2022: Masters in IT, learning and organisational change 👩‍🏫",
-    },
-    {
-      title: "2023: Student Frontend Developer at DFDS 👩‍🏫",
-    },
-  ];
-  const [mobileViewport, setMobileViewport] = useState(
-    window.innerWidth < 1200
-  );
-  //console.log(mobileViewport);
-  //mobile&tablet
-  const updateViewport = () => {
-    setMobileViewport(window.innerWidth < 1200);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", updateViewport);
-    return () => window.removeEventListener("resize", updateViewport);
-  }, []);
-  return (
-    <TimeLineStyle>
-      {mobileViewport ? (
-        <div className="divMobile">
-          {items?.map((item) => (
-            <p>{item.title}</p>
-          ))}
-        </div>
-      ) : (
-        <Chrono
-          items={items}
-          theme={{
-            primary: "var(--cherry-blossom-pink)",
-            secondary: "none",
-            titleColor: "var(--baby-powder)",
-            titleColorActive: "var(--baby-powder)",
-          }}
-          mode="HORIZONTAL"
-        />
-      )}
+import { useEffect, useRef } from "react";
+import { addAnimation } from "../../utils/helpers";
 
-      <p>
+const TimeLine = () => {
+  const timelineRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    addAnimation(timelineRef.current, "animate-fadeIn", 500);
+  }, []);
+
+  return (
+    <section className="w-screen items-center flex flex-col justify-center my-[7dvh]">
+      <ul
+        ref={timelineRef}
+        className="timeline timeline-snap-icon max-md:timeline-vertical timeline-horizontal opacity-0 scale-100"
+      >
+        <li>
+          <div className="timeline-start">
+            High-school graduation 🎓
+            <br />
+            <span className="text-secondary">| 2016 |</span>
+          </div>
+          <hr className="bg-secondary" />
+        </li>
+        <li>
+          <hr className="bg-secondary" />
+          <div className="timeline-end">
+            <span className="text-secondary">| 2016 |</span>
+            <br />
+            Moved to Denmark 🇩🇰
+          </div>
+          <hr className="bg-secondary" />
+        </li>
+        <li>
+          <hr className="bg-secondary" />
+          <div className="timeline-start">
+            PBA: Innovation and Entrepreneurship 💼
+            <br />
+            <span className="text-secondary">| 2020 |</span>
+          </div>
+          <hr className="bg-secondary" />
+        </li>
+        <li>
+          <hr className="bg-secondary" />
+          <div className="timeline-end">
+            <span className="text-secondary">| 2022 |</span>
+            <br />
+            Educated Web developer👩‍💻
+          </div>
+          <hr className="bg-secondary" />
+        </li>
+        <li>
+          <hr className="bg-secondary" />
+          <div className="timeline-start">
+            Student Frontend-Dev at DFDS
+            <br />
+            <span className="text-secondary">| 2023 |</span>
+          </div>
+          <hr className="bg-secondary" />
+        </li>
+        <li>
+          <hr className="bg-secondary" />
+          <div className="timeline-end">
+            <span className="text-secondary">| 2024 |</span>
+            <br />
+            Cand. IT. 👩‍🎓
+          </div>
+          <hr className="bg-secondary" />
+        </li>
+        <li>
+          <hr className="bg-secondary" />
+          <div className="timeline-start">
+            Software Engineer at TV2
+            <br />
+            <span className="text-secondary">| 2024 |</span>
+          </div>
+          <hr className="bg-secondary" />
+        </li>
+      </ul>
+
+      <p className="mt-[5dvh] font-bold text-sm">
         Curious? see my{" "}
-        <a href="https://www.linkedin.com/in/paulineholm/">LinkedIn</a> for more
-        details
+        <a
+          href="https://www.linkedin.com/in/paulineholm/"
+          className="text-[#0072b1] hover:text-[var(--color-freshLime)]"
+        >
+          LinkedIn
+        </a>{" "}
+        for more details
       </p>
-    </TimeLineStyle>
+    </section>
   );
 };
 

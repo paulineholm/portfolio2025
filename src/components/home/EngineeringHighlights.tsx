@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import SectionHead from "./SectionHead";
-import { Link } from "react-router-dom";
+import Project from "../common/Project";
 import projects from "../../assets/data/projects";
 
 interface ProjectType {
@@ -8,6 +8,10 @@ interface ProjectType {
   img: string;
   title: string;
   head: string;
+  date: string;
+  stackTxt: string;
+  stack: React.ReactNode;
+  meta: string;
 }
 
 const EngineeringHighlights = () => {
@@ -18,20 +22,17 @@ const EngineeringHighlights = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Get the position data from the data attribute
             const position = entry.target.getAttribute("data-position");
-            // Add the appropriate animation class
             entry.target.classList.add(
               position === "left" ? "animate-slideLeft" : "animate-slideRight"
             );
-            // Unobserve after animation is triggered
             observerRef.current?.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.1, // Trigger when at least 10% of the element is visible
-        rootMargin: "50px", // Start animation slightly before element comes into view
+        threshold: 0.1,
+        rootMargin: "50px",
       }
     );
 
@@ -82,22 +83,14 @@ const EngineeringHighlights = () => {
                         className="w-full h-full object-cover"
                       />
                     </figure>
-                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center rounded-xl">
-                      <h2 className="text-lg font-bold text-white">
-                        {project.title}
-                      </h2>
-                      <p className="text-gray-200 mt-2 text-sm line-clamp-2">
-                        {project.head}
-                      </p>
-                      <div className="mt-3">
-                        <Link
-                          to={`/project/${project.id}`}
-                          className="btn btn-primary btn-sm"
-                        >
-                          Read more
-                        </Link>
-                      </div>
-                    </div>
+                    <Project
+                      id={project.id}
+                      title={project.title}
+                      date={project.date}
+                      stackTxt={project.stackTxt}
+                      stack={project.stack}
+                      meta={project.meta}
+                    />
                   </div>
                 ))}
               </div>

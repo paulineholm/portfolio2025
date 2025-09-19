@@ -46,62 +46,6 @@
 }
 
 @layer base {
-  /* Font faces v1 */
-  @font-face {
-    font-family: "Roboto Regular";
-    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Roboto Light";
-    src: url("../fonts/Roboto-Light.ttf") format("truetype");
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Roboto Thin";
-    src: url("../fonts/Roboto-Thin.ttf") format("truetype");
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Lora Regular";
-    src: url("../fonts/Lora-Regular.ttf") format("truetype");
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Lora Medium";
-    src: url("../fonts/Lora-Medium.ttf") format("truetype");
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Roboto Italic";
-    src: url("../fonts/Roboto-Italic.ttf") format("truetype");
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "Roboto Light Italic";
-    src: url("../fonts/Roboto-LightItalic.ttf") format("truetype");
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "Roboto Thin Italic";
-    src: url("../fonts/Roboto-ThinItalic.ttf") format("truetype");
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "Lora Italic";
-    src: url("../fonts/Lora-Italic.ttf") format("truetype");
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "Lora Medium Italic";
-    src: url("../fonts/Lora-MediumItalic.ttf") format("truetype");
-    font-style: italic;
-  }
-  @font-face {
-    font-family: "Gambarino";
-    src: url("../fonts/Gambarino-Regular.ttf") format("truetype");
-    font-style: normal;
-  }
   /* Font faces v2 */
   @font-face {
     font-family: "Melodrama";
@@ -120,15 +64,6 @@
   }
 
   :root {
-    --body-text: 15px;
-    --body-height: 25px;
-    --small-head: 16px;
-    --small-line-height: 1.1;
-    --medium-head: 24px;
-    --medium-line-height: 1.1;
-    --regular-head: 36px;
-    --regular-spacing: 0.075em;
-    --regular-line-height: 1.1;
     font-size: 16px;
     color: #272727 !important;
     background-color: var(--color-negev) !important;
@@ -147,13 +82,6 @@
 
   img {
     max-width: 100%;
-  }
-
-  html {
-    font-size: 16px;
-    color: #272727;
-    background-color: var(--color-negev);
-    font-family: "Nunito";
   }
 
   ul,
@@ -193,10 +121,6 @@
   }
 }
 
-.animate-slideInRight {
-  animation: slideIn-right 2s ease-out forwards;
-}
-
 @keyframes slideIn-right {
   from {
     transform: translateX(100%);
@@ -225,4 +149,8 @@
 
 .animate-slideRight {
   animation: slideIn-right 0.8s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideIn-right 2s ease-out forwards;
 }

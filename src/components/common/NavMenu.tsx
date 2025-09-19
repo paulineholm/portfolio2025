@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom";
 
 const NavMenu = () => {
+  const baseStyles =
+    "uppercase tracking-[0.09rem] px-5 hover:text-[var(--color-freshLime)] transition-colors duration-300 ease-in-out";
+
+  const getLinkClassStyle = ({ isActive }: { isActive: boolean }) =>
+    `${baseStyles} ${
+      isActive ? "text-[var(--color-midnight)]" : "text-[var(--color-negev)]"
+    }`;
+
   return (
     <nav
       className="
@@ -9,44 +17,16 @@ const NavMenu = () => {
       "
     >
       <ul className="w-[60vw] text-end hidden md:block">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `uppercase tracking-[0.07rem] px-5 text-[var(--color-negev)] ${
-              isActive ? "text-[var(--color-freshLime)]" : ""
-            }`
-          }
-        >
+        <NavLink to="/" end className={getLinkClassStyle}>
           Home
         </NavLink>
-        <NavLink
-          to="/about"
-          className={({ isActive }) =>
-            `uppercase tracking-[0.07rem] px-5 text-[var(--color-negev)] ${
-              isActive ? "text-[var(--color-freshLime)]" : ""
-            }`
-          }
-        >
+        <NavLink to="/about" className={getLinkClassStyle}>
           About
         </NavLink>
-        <NavLink
-          to="/projects"
-          className={({ isActive }) =>
-            `uppercase tracking-[0.07rem] px-5 text-[var(--color-negev)] ${
-              isActive ? "text-[var(--color-freshLime)]" : ""
-            }`
-          }
-        >
+        <NavLink to="/projects" className={getLinkClassStyle}>
           Projects
         </NavLink>
-        <NavLink
-          to="/contact"
-          className={({ isActive }) =>
-            `uppercase tracking-[0.07rem] px-5 text-[var(--color-negev)] ${
-              isActive ? "text-[var(--color-freshLime)]" : ""
-            }`
-          }
-        >
+        <NavLink to="/contact" className={getLinkClassStyle}>
           Contact
         </NavLink>
       </ul>

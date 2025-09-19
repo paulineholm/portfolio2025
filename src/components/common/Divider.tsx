@@ -15,7 +15,6 @@ const sizeClassMap: Record<DividerSize, string> = {
   lg: "h-[3px]",
 };
 
-// Using CSS custom properties with the 'var' function
 const colorStyles = (color: DividerColor): React.CSSProperties => ({
   backgroundColor: `var(--color-${color})`,
 });

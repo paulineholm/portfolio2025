@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import projects from "../../assets/data/projects";
 import Masonry from "react-masonry-css";
+import Project from "../common/Project";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -26,39 +26,14 @@ const ProjectsMasonry = () => {
                        md:w-[90vw] lg:w-[45vw]
                        sm:w-full"
             />
-            <Link
-              to={`/project/${project.id}`}
-              className="absolute inset-0 opacity-0 hover:opacity-75
-           transition-opacity duration-500 bg-[var(--color-midnight)]
-           rounded-[10px] p-4 flex flex-col justify-between"
-            >
-              <div className="flex flex-row justify-between">
-                <div className="text-[var(--color-negev)] text-left text-sm">
-                  {project.date}
-                </div>
-                <p className="text-[var(--color-negev)] text-sm [writing-mode:vertical-rl] transform rotate-180 text-right">
-                  {project.stackTxt}
-                </p>
-              </div>
-
-              <article
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-             text-[2rem] text-[var(--color-negev)] hover:text-[var(--color-thina)]"
-              >
-                <p className="font-['Melodrama'] text-center">
-                  {project.title}
-                </p>
-              </article>
-
-              <div className="flex flex-row justify-between items-end">
-                <span className="flex flex-row text-[var(--color-negev)] text-2xl">
-                  {project.stack}
-                </span>
-                <div className="text-[var(--color-negev)] text-right text-sm">
-                  {project.meta}
-                </div>
-              </div>
-            </Link>
+            <Project
+              id={project.id.toString()}
+              title={project.title}
+              date={project.date}
+              stackTxt={project.stackTxt}
+              stack={project.stack}
+              meta={project.meta}
+            />
           </div>
         ))}
       </Masonry>

@@ -37,7 +37,6 @@ import iPlayMusic1 from "../img/mockupiplaymusic/iPlayMusic1.png";
 import iPlayMusic2 from "../img/mockupiplaymusic/iPlayMusic2.png";
 import iPlayMusic3 from "../img/mockupiplaymusic/iPlayMusic3.png";
 import iPlayMusicHead from "../img/mockupiplaymusic/iplaymusichead.png";
-// import iPlayMusic4 from "../img/mockupiplaymusic/iPlayMusic4.png";
 import NewsBox from "../img/NewsBox.png";
 import NewsBox1 from "../img/mockupnewsbox/newsbox1.png";
 import NewsBox2 from "../img/mockupnewsbox/newsbox2.png";

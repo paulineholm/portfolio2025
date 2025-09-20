@@ -1,6 +1,6 @@
 import projects from "../../assets/data/projects";
 import Masonry from "react-masonry-css";
-import Project from "../common/Project";
+import ProjectCard from "../common/ProjectCard";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -26,7 +26,7 @@ const ProjectsMasonry = () => {
                        md:w-[90vw] lg:w-[45vw]
                        sm:w-full"
             />
-            <Project
+            <ProjectCard
               id={project.id.toString()}
               title={project.title}
               date={project.date}

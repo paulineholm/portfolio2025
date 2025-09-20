@@ -31,13 +31,15 @@ const Project = () => {
             <img
               src={project.headimg}
               alt={project.title}
-              className="w-full max-w-[500px] h-auto mx-auto block my-2 mb-12 rounded-[15px]"
+              className="w-full max-w-[500px] h-auto mx-auto block my-2 mb-10 rounded-[15px]"
             />
 
             <article>
-              <p className="pb-[1dvw]">{project.date}</p>
+              <p className="pb-[1dvw] text-[1.9dvh] font-semibold">
+                | {project.date} |
+              </p>
               <p className="leading-normal pb-[4dvh]">{project.desc}</p>
-              <div className="text-[2dvh]">
+              <div className="text-[1.5dvh]">
                 Made with:{" "}
                 <span className="inline-flex items-center text-2xl">
                   {project.stack}
@@ -49,12 +51,14 @@ const Project = () => {
               </div>
               <br />
               <div className="flex flex-row justify-start my-[1dvh]">
-                <a
-                  href={project.github}
-                  className="text-[3dvh] text-[var(--color-midnight)] mx-1 hover:text-[var(--color-freshLime)]"
-                >
-                  <FaGithub />
-                </a>
+                {!project.stackTxt.includes("Figma") && (
+                  <a
+                    href={project.github}
+                    className="text-[3dvh] text-[var(--color-midnight)] mx-1 hover:text-[var(--color-freshLime)]"
+                  >
+                    <FaGithub />
+                  </a>
+                )}
                 {project.link ? (
                   <a
                     href={project.link}

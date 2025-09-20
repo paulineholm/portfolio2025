@@ -1,8 +1,8 @@
 const VideoFrame = () => {
   return (
-    <section className="flex flex-col items-center my-[7dvh]">
+    <section className="flex flex-col items-center my-[5dvh]">
       <h2 className="text-2xl mb-5 text-[var(--color-thina)]">
-        Little bit more about my Danish journey
+        little bit about my Danish journey
       </h2>
       <iframe
         width="750"

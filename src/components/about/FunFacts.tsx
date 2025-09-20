@@ -1,6 +1,7 @@
 const FunFacts = () => {
   return (
-    <section className="w-screen text-center tracking-wider leading-[2.3] my-[7dvh]">
+    <section className="w-screen text-center tracking-wider leading-[2.3] my-[5dvh]">
+      <h2 className="text-2xl mb-2 text-[var(--color-thina)]">fun facts</h2>
       <article>
         <p className="max-md:pb-3 max-md:font-extralight">
           👩🏻‍🍳 Huge foodie, passionate amateur chef; can sable a champagne
@@ -10,7 +11,7 @@ const FunFacts = () => {
           alphabet
         </p>
         <p className="max-md:pb-3 max-md:font-extralight">
-          🎨 An interest for UI/UX and product development
+          🎨 Interested in UI/UX and product development
         </p>
         <p className="max-md:pb-3 max-md:font-extralight">
           🔐 A diploma & master thesis in Cyber Security

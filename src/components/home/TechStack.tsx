@@ -16,7 +16,7 @@ import {
 
 const TechStack = () => {
   return (
-    <section className="w-screen text-center tracking-wide my-[7dvh]">
+    <section className="w-screen text-center tracking-wide my-[7dvh] px-[4vw]">
       <div className="text-[6.5dvh] flex flex-wrap justify-center gap-6 pb-5">
         <FaReact className="inline" />
         <RiNextjsFill className="inline" />

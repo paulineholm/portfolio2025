@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-interface ProjectProps {
+interface ProjectCardProps {
   id: string;
   title: string;
   date: string;
@@ -9,7 +9,14 @@ interface ProjectProps {
   meta: string;
 }
 
-const Project = ({ id, title, date, stackTxt, stack, meta }: ProjectProps) => {
+const ProjectCard = ({
+  id,
+  title,
+  date,
+  stackTxt,
+  stack,
+  meta,
+}: ProjectCardProps) => {
   return (
     <Link
       to={`/project/${id}`}
@@ -45,4 +52,4 @@ const Project = ({ id, title, date, stackTxt, stack, meta }: ProjectProps) => {
   );
 };
 
-export default Project;
+export default ProjectCard;

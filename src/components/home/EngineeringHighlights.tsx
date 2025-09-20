@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import SectionHead from "./SectionHead";
-import Project from "../common/Project";
+import ProjectCard from "../common/ProjectCard";
 import projects from "../../assets/data/projects";
+import { parseMonthYear } from "../../utils/helpers";
 
 interface ProjectType {
   id: string;
@@ -36,7 +37,6 @@ const EngineeringHighlights = () => {
       }
     );
 
-    // Get all project elements
     const projectElements = document.querySelectorAll(".project-item");
     projectElements.forEach((element) => {
       observerRef.current?.observe(element);
@@ -53,6 +53,11 @@ const EngineeringHighlights = () => {
         <SectionHead text="✨ engineering highlights ✨" />
         <div className="flex flex-col gap-5 w-full">
           {projects
+            .sort(
+              (a, b) =>
+                parseMonthYear(b.date).getTime() -
+                parseMonthYear(a.date).getTime()
+            )
             .slice(0, 6)
             .reduce((rows: any[], project, index) => {
               if (index % 2 === 0) {
@@ -83,7 +88,7 @@ const EngineeringHighlights = () => {
                         className="w-full h-full object-cover"
                       />
                     </figure>
-                    <Project
+                    <ProjectCard
                       id={project.id}
                       title={project.title}
                       date={project.date}

@@ -13,3 +13,22 @@ export const addAnimation = (
     element.classList.add(className);
   }, delay);
 };
+
+export const parseMonthYear = (dateStr: string) => {
+  const [month, year] = dateStr.split(" ");
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return new Date(parseInt(year), months.indexOf(month));
+};

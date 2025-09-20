@@ -26,7 +26,7 @@ export const Hero = () => {
       />
       <p
         ref={subTitle}
-        className="absolute top-[25dvh] ml-17.5 mb-15 text-[var(--color-freshLime)] text-[2.5dvw] drop-shadow font-serif opacity-0"
+        className="absolute top-[32.5dvh] ml-10 text-[var(--color-freshLime)] text-[1.5dvh] drop-shadow font-serif opacity-0 lg:ml-17.5 lg:mb-15 lg:top-[25dvh] lg:text-[3.5dvh]"
       >
         software engineer
       </p>
@@ -40,18 +40,18 @@ export const Hero = () => {
         </h1>
       </div>
 
-      <div className="absolute left-[57%] top-[100dvh] -translate-x-1/2 -translate-y-[70%] z-20 pointer-events-none">
+      <div className="absolute right-[-40%] top-[50%] -translate-y-1/2 z-20 pointer-events-none lg:right-auto lg:left-[38%] lg:top-[100dvh] lg:-translate-y-[70%]">
         <img
           ref={img}
           src={HeroImg}
           alt="Pauline Holm"
-          className="w-[38dvw] h-auto opacity-0 transition-opacity duration-1500"
+          className="w-[100dvw] h-auto opacity-0 transition-opacity duration-1500 lg:w-[38dvw]"
         />
       </div>
 
       <div
         ref={fullDesc}
-        className="absolute top-[35dvw] right-15 text-[1.5dvw] text-right"
+        className="absolute bottom-40 left-0 right-0 px-10 text-[3dvw] opacity-0 text-left lg:text-right lg:text-[1.5dvw] lg:px-0 lg:bottom-auto lg:right-15 lg:left-auto lg:top-[35dvw]"
       >
         <p>
           Frontend-focused energetic tech professional
@@ -64,7 +64,7 @@ export const Hero = () => {
         </p>
         <a
           href="https://drive.google.com/file/d/1ZPTT8bUznylqtvIqSltd1-q346UOtbxD/view?usp=share_link"
-          className="mt-25 font-serif text-[1.5dvw] text-[var(--color-thina)] hover:text-black transition-colors"
+          className="mt-25 font-serif text-[4dvw] text-[var(--color-thina)] hover:text-black transition-colors lg:text-[1.5dvw]"
         >
           &lt;resume /&gt;
         </a>

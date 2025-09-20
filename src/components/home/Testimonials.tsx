@@ -8,7 +8,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 const Testimonials = () => {
   console.log(testimonials);
   return (
-    <section className="w-screen h-[38vh] px-[15vw] py-[4vh] text-center md:h-[35vh] md:px-[2vw] md:py-[2vh] sm:h-[65vh] mb-[5dvh]">
+    <section className="w-screen my-[4vh] text-center md:h-[30vh]  sm:h-[50vh] mb-[5dvh]">
       <SectionHead text="people say about me..." />
       <Swiper
         modules={[Autoplay]}

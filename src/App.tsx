@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useBreakpoint } from "./utils/useBreakpoint";
 import NavMenu from "./components/common/NavMenu";
 import BurgerMenu from "./components/common/BurgerMenu";
 import Footer from "./components/common/Footer";
@@ -11,28 +11,21 @@ import Project from "./views/Project";
 import Error from "./views/Error";
 
 function App() {
-  const [resViewport, setResViewport] = useState(window.innerWidth < 1200);
-  //console.log(resViewport);
-  //mobile&tablet
-  const updateViewport = () => {
-    setResViewport(window.innerWidth < 1200);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", updateViewport);
-    return () => window.removeEventListener("resize", updateViewport);
-  }, []);
+  const { isDesktop } = useBreakpoint();
   return (
-    <div className="App">
-      {resViewport ? <BurgerMenu /> : <NavMenu />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/project/:id" element={<Project />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <Footer />
+    <div className="flex flex-col min-h-screen">
+      {isDesktop ? <NavMenu /> : <BurgerMenu />}
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/project/:id" element={<Project />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Footer />
+      </main>
     </div>
   );
 }

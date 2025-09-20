@@ -21,9 +21,9 @@ const Contact = () => {
           className="w-[37.5dvw] border-2 border-[var(--color-freshLime)] rounded-md ml-[2vw] md:block hidden"
         />
         <article className="w-[62.5dvh] md:ml-[5dvw] flex flex-col justify-center">
-          <h1 className="leading-relaxed">say hi!</h1>
+          <h1 className="leading-relaxed">don't be a stranger!</h1>
           <p className="leading-normal">
-            I am always open for new challenges.
+            I am always open for new challenges, people and knowledge
             <br />
             Reach out and let's have a coffee ☕
           </p>

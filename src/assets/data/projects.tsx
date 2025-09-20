@@ -56,16 +56,23 @@ import Mapcy from "../img/mockupmapcy/mapcy.png";
 import Mapcy1 from "../img/mockupmapcy/mapcy1.png";
 import Mapcy2 from "../img/mockupmapcy/mapcy2.png";
 import Mapcy3 from "../img/mockupmapcy/mapcy3.png";
+import Portfoliov11 from "../img/mockupportfoliov1/portfoliov11.png";
+import Portfoliov12 from "../img/mockupportfoliov1/portfoliov12.png";
+import Portfoliov13 from "../img/mockupportfoliov1/portfoliov13.png";
+import Portfoliov14 from "../img/mockupportfoliov1/portfoliov14.png";
+import Portfoliov15 from "../img/mockupportfoliov1/portfoliov15.png";
+import Portfoliov21 from "../img/mockupportfoliov2/portfoliov21.png";
+import Portfoliov22 from "../img/mockupportfoliov2/portfoliov22.png";
 
 const projects = [
   {
     id: 1,
     title: "CPH Night Club",
-    head: "Final Exam - simple website with focus on animations",
-    desc: "Final Exam at school, a simple website for a night club with lots of animations. Users can see many relevant details regarding the clubs offer, see the gallery, testimonials as well as the newest blogposts and collaborate on that with other users. Besides, the contact info (and contact formular) are provided. Not deployed at it was only working locally with school-provided API.",
+    head: "EUD Final Exam - simple website with focus on animations",
+    desc: "A concept website for a fictional nightclub, designed with rich animations. The site showcases key information such as the club’s offerings, a gallery, customer testimonials, and the latest blog posts. Users can also interact and collaborate with each other on the platform. Additionally, the website includes contact details along with a contact form. Note that the project was not deployed online, as it relied on a school-provided API and ran only in a local environment.",
     stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
     stackTxt: "React, Styled Components, React Router",
-    github: "#",
+    github: "https://github.com/paulineholm/CPHNightClub/tree/main/nightclub",
     date: "March 2022",
     meta: "School project",
     img: CPHNightClub,
@@ -75,11 +82,11 @@ const projects = [
   {
     id: 2,
     title: "Landrup Dans",
-    head: "(Pre-final) Exam, an app for a dance school",
-    desc: "Pre-exam (final), an app for a dance school (school project). The app is supposed to give users and teachers overview at activities at school and all important details. It gives possibility to sign for activities. Not deployed at it was only working locally with school-provided API.",
+    head: "EUD (Pre-final) Exam - a dance school app",
+    desc: "A prototype app for a fictional dance school, created as a school project. The app provides both students and teachers with an overview of school activities and key information. It also includes functionality for users to sign up for activities. Note that the project was not deployed online, as it relied on a school-provided API and ran only in a local environment.",
     stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
     stackTxt: "React, Styled Components, React Router",
-    github: "#",
+    github: "https://github.com/paulineholm/LandrupDans/tree/main/landrup-dans",
     date: "March 2022",
     meta: "School project",
     img: LandrupDans,
@@ -89,8 +96,8 @@ const projects = [
   {
     id: 3,
     title: "Smart Lights (Hue)",
-    head: "Smartlights App based on Philips Hue API (school project)",
-    desc: "This app is a school project - where focus was on object oriented programming. Its purpose was to communicate with the physical lamps provided by school (Philips Hue bulbs) via the bridge and Philips Hue API for developers. Not deployed as it is only working on the local bridge and its API.",
+    head: "Smartlights App - Philips Hue API (school project)",
+    desc: "An application built during web developer education in order to demonstrate object-oriented programming principles. The app communicates with physical Philips Hue bulbs provided by the school, using the Hue Bridge and the official Philips Hue Developer API. Note that the project was not deployed online, as it relied on a school-provided API and ran only in a local environment.",
     stack: [<FaReact />, <GiWomanElfFace />, <SiReactrouter />],
     stackTxt: "React, Emotion, React Router",
     github: "https://github.com/paulineholm/smartlights-hue",
@@ -103,12 +110,12 @@ const projects = [
   {
     id: 4,
     title: "The Proud Tracker",
-    head: "Small progressive web app with COVID-19 numbers (school project)",
-    desc: "The Proud Tracker progressive web app is a small school project. This tracker gives users overview over the newest COVID-19 numbers worldwide and comes with push notifications.",
+    head: "Mini progressive web app with COVID-19 numbers (school project)",
+    desc: "A lightweight progressive web app developed as a school project. Proud Tracker provides users with up-to-date global COVID-19 statistics in a clear overview. It also features push notifications to keep users informed about the latest numbers.",
     stack: [<FaReact />, <GiWomanElfFace />, <SiReactrouter />],
     stackTxt: "React, Emotion, React Router",
     link: "https://proud-tracker.netlify.app/",
-    github: "#",
+    github: "https://github.com/paulineholm/TheProudTracker",
     date: "January 2022",
     meta: "School project",
     img: TheProudTracker,
@@ -118,8 +125,8 @@ const projects = [
   {
     id: 5,
     title: "iPlayMusic",
-    head: "Music Player App based on Spotify API (school-project)",
-    desc: "A music app, that uses Spotify API to give user overview at their favorite music: playlists, albums, songs. Provided with light and dark theme, you must login with your Spotify account to access full functionality.",
+    head: "Music Player App - Spotify API (school project)",
+    desc: "A music application that connects to the Spotify API to give users an overview of their favorite content, including playlists, albums, and songs. The app supports both light and dark themes, and requires users to log in with their Spotify account to unlock full functionality.",
     stack: [<FaReact />, <GiWomanElfFace />, <SiReactrouter />],
     stackTxt: "React, Emotion, React Router",
     link: "https://iplaymusic-pholm.netlify.app/",
@@ -133,8 +140,8 @@ const projects = [
   {
     id: 6,
     title: "News Box",
-    head: "News Box with Ny Times API (school project)",
-    desc: "A news app, that uses New York Times API to give user overview at the news.",
+    head: "News Box - NY Times API (school project)",
+    desc: "A news application that integrates the New York Times API to provide users with an up-to-date overview of current articles and headlines.",
     stack: [<FaHtml5 />, <FaSass />, <FaJsSquare />, <FaGulp />],
     stackTxt: "HTML, SASS, JavaScript, Gulp",
     link: "https://newsbox-pholm.netlify.app/",
@@ -147,12 +154,12 @@ const projects = [
   },
   {
     id: 7,
-    title: "Portfolio 2020",
-    head: "My first portfolio from 2020",
-    desc: "This portfolio was made using HTML, CSS and basic JavaScript only. It was when I just started on Web developer education at Roskilde Technical College.",
+    title: "Portfolio 2020 (v0)",
+    head: "Pauline Holm portfolio v0",
+    desc: "A simple portfolio built utilizing only HTML, CSS, and basic JavaScript. Created at the very beginning of my Web Developer education at Roskilde Technical College, it served as an introduction to fundamental web development concepts.",
     stack: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare />],
     stackTxt: "HTML, CSS, JavaScript",
-    link: "https://paulineholm.netlify.app",
+    link: "https://paulineholm.netlify.app", //TO DO: change link after deployment
     github: "https://github.com/paulineholm/holmpauline",
     date: "November 2020",
     meta: "School project",
@@ -164,7 +171,7 @@ const projects = [
     id: 8,
     title: "Gatsby and Style",
     head: "Simple website made with Gatsby (school project)",
-    desc: "Simple website made for a school project - focus on Gatsby and Styled Components, as well as color theory.",
+    desc: "A simple website developed as a school project, focusing on Gatsby and Styled Components. The project also emphasized applying color theory and design principles to create a visually balanced and engaging user experience.",
     stack: [<SiGatsby />, <SiStyledcomponents />],
     stackTxt: "Gatsby, Styled Components",
     link: "https://gatsbyandstyle.gatsbyjs.io",
@@ -178,11 +185,11 @@ const projects = [
   {
     id: 9,
     title: "Mapcy",
-    head: "Mapcy - Sustainable Tourist Guide (school project)",
-    desc: "Mock-up for a school project, where we were asked to improve an existing concept of Mapcy. Based on conducted research, we have decided to add 'Fun facts' and 'Green events', which have met a positive feedback from our Stakeholder Oana.",
+    head: "Mapcy - Sustainable Tourist Guide (uni project)",
+    desc: "A mock-up developed as part of a university project, where the task was to improve upon the existing Mapcy concept. Based on user research and stakeholder discussions, the team introduced two new features: “Fun Facts” and “Green Events.” Both additions received highly positive feedback from our stakeholder, Oana. The project was carried out within the framework of the IT, Learning and Organizational Change master’s program at Aalborg University.",
     stack: [<SiFigma />],
     stackTxt: "Figma",
-    link: "#",
+    link: "https://www.figma.com/proto/UQvEnVt3PrlhVH9vGAwzXI/Mapcyfinal?node-id=0-1&t=k7cunj4pa5J2UMFs-1",
     github: "#",
     date: "October 2022",
     meta: "Uni project",
@@ -192,33 +199,33 @@ const projects = [
   },
   {
     id: 10,
-    title: "Cloud Migration",
-    head: "Mapcy - Sustainable Tourist Guide (school project)",
-    desc: "Mock-up for a school project, where we were asked to improve an existing concept of Mapcy. Based on conducted research, we have decided to add 'Fun facts' and 'Green events', which have met a positive feedback from our Stakeholder Oana.",
-    stack: [<SiFigma />],
-    stackTxt: "Figma",
-    link: "#",
-    github: "#",
-    date: "October 2022",
-    meta: "Work project",
-    img: Mapcy,
-    mockups: [Mapcy3, Mapcy2, Mapcy1],
-    headimg: Mapcy,
+    title: "Portfolio 2022 (v1)",
+    head: "Pauline Holm portfolio v1",
+    desc: "The first professional version of my portfolio, created after completing my Web Developer education at Roskilde Technical College. Built with React, Styled Components, Framer Motion and React Router, it presented my skills and projects in a modern, interactive and animated format. This portfolio played a key role in securing my first real-world programming positions and served as the foundation for my updated 2025 portfolio.",
+    stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
+    stackTxt: "React, Styled Components, React Router",
+    link: "https://www.figma.com/proto/UQvEnVt3PrlhVH9vGAwzXI/Mapcyfinal?node-id=0-1&t=k7cunj4pa5J2UMFs-1", //TO DO: edit source
+    github: "https://github.com/paulineholm/portfolio2022",
+    date: "August 2022",
+    meta: "Portfolio",
+    img: Portfoliov14,
+    mockups: [Portfoliov11, Portfoliov12, Portfoliov13],
+    headimg: Portfoliov14,
   },
   {
     id: 11,
-    title: "GHA Automatisations",
-    head: "Cloud Migration (school project)",
-    desc: "Mock-up for a school project, where we were asked to improve an existing concept of Cloud Migration. Based on conducted research, we have decided to add 'Fun facts' and 'Green events', which have met a positive feedback from our Stakeholder Oana.",
-    stack: [<SiFigma />],
-    stackTxt: "Figma",
-    link: "#",
+    title: "Portfolio 2025 (v2)",
+    head: "Pauline Holm portfolio v2",
+    desc: "A mock-up developed as part of a university project, where the task was to improve upon the existing Portfolio concept. Based on user research and stakeholder discussions, the team introduced two new features: “Fun Facts” and “Green Events.” Both additions received highly positive feedback from our stakeholder, Oana. The project was carried out within the framework of the IT, Learning and Organizational Change master’s program at Aalborg University.",
+    stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
+    stackTxt: "React, Styled Components, React Router",
+    link: "https://www.figma.com/proto/UQvEnVt3PrlhVH9vGAwzXI/Mapcyfinal?node-id=0-1&t=k7cunj4pa5J2UMFs-1", //TO DO: edit source link
     github: "#",
-    date: "October 2022",
-    meta: "Work project",
-    img: Mapcy,
-    mockups: [Mapcy3, Mapcy2, Mapcy1],
-    headimg: Mapcy,
+    date: "September 2025",
+    meta: "Portfolio",
+    img: Portfoliov21,
+    mockups: [Portfoliov21, Portfoliov22],
+    headimg: Portfoliov21,
   },
 ];
 

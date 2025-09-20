@@ -17,7 +17,7 @@ const Intro = () => {
   }, []);
 
   return (
-    <section className="relative flex w-screen min-h-screen overflow-hidden">
+    <section className="relative flex w-screen h-screen overflow-hidden">
       <img
         ref={imgRef}
         src={PHolmGrad}
@@ -26,10 +26,10 @@ const Intro = () => {
       />
       <div
         ref={bgRef}
-        className="absolute mt-[2.5dvh] ml-5 top-0 right-0 w-8/12 h-screen bg-[var(--color-thina)] opacity-0"
+        className="absolute mt-[2.5dvh] ml-5 top-0 right-0 h-screen bg-[var(--color-thina)] opacity-0 w-[95%] z-10 lg:w-8/12"
       />
-      <div ref={contentRef} className="opacity-0 flex-1 z-10">
-        <article className="leading-normal m-[15dvh]">
+      <div ref={contentRef} className="absolute opacity-0 z-20 w-full">
+        <article className="leading-normal m-[5dvh] text-[var(--color-negev)] lg:m-[15dvh]">
           <h1 className="uppercase font-medium">Cand. IT. Pauline Holm</h1>
           <h2 className="font-light">Software Engineer & Tech Enthusiast</h2>
           <p className="pt-6 leading-relaxed">
@@ -42,19 +42,23 @@ const Intro = () => {
             dedication and drive are key. I love being challenged and given
             responsibility. I gain energy from dev-collaboration and
             interactions rooted in tech- and product- development. As a
-            colleague I am supportive, reliable, and always ready to help.
+            colleague I am smiling, supportive, reliable, and always ready to
+            help.
             <br />
             <br />
             My career started in the restaurant industry, where, through many
             years, I learned resilience, adaptability and leadership - rising
-            from dishwasher to managing the high-paced "show". For the past five
-            years, I've transitioned that same drive and work ethic to tech,
-            building my career as a software engineer, and I absolutely love it!
+            from dishwasher to managing the high-paced <i>"show"</i>. For the
+            past five years, I've transitioned that same drive and work ethic to
+            tech, building my career as a software engineer, and I absolutely
+            love it!
             <br />
             <br />
             Currently looking for new opportunities to rock the tech world! 👩🏻‍💻
           </p>
-          <h3 className="pt-7 pb-1.5">Scroll down to get to know me better</h3>
+          <h3 className="pt-7 pb-1.5">
+            <i>scroll toget to know me better</i>
+          </h3>
           <Link
             to="/projects"
             className="text-[var(--color-negev)] hover:text-[var(--color-freshLime)]"

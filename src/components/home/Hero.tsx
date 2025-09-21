@@ -26,7 +26,7 @@ export const Hero = () => {
       />
       <p
         ref={subTitle}
-        className="absolute top-[35dvh] ml-10 text-[var(--color-freshLime)] text-[1.75dvh] drop-shadow font-serif opacity-0 lg:ml-17.5 lg:mb-15 lg:top-[25dvh] lg:text-[3.5dvh]"
+        className="absolute max-md:top-[15dvw] ml-10 text-[var(--color-freshLime)] text-[1.75dvh] drop-shadow font-serif opacity-0 lg:ml-17.5 lg:mb-15 lg:top-[12.5dvw] lg:text-[3.5dvh]"
       >
         software engineer
       </p>
@@ -51,7 +51,7 @@ export const Hero = () => {
 
       <div
         ref={fullDesc}
-        className="absolute bottom-60 left-0 right-0 pl-10 pr-30 text-[3dvw] opacity-0 text-left lg:text-right lg:text-[1.25dvw] lg:px-0 lg:bottom-auto lg:right-15 lg:left-auto lg:top-[35dvw]"
+        className="absolute bottom-[65dvw] left-0 right-0 pl-10 pr-30 text-[3dvw] opacity-0 text-left lg:text-right lg:text-[1.5dvw] lg:px-0 lg:bottom-auto lg:right-15 lg:left-auto lg:top-[35dvw]"
       >
         <p>
           Frontend-focused energetic tech professional

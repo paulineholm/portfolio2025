@@ -33,7 +33,7 @@ export const Hero = () => {
 
       <div
         ref={fullName}
-        className="w-full flex justify-left ml-10 left-0 -mt-15 opacity-0"
+        className="w-full flex justify-left ml-10 left-0 -mt-15 opacity-0 max-md:top[]"
       >
         <h1 className="uppercase text-[17dvw] tracking-wide drop-shadow">
           Pauline Holm
@@ -51,7 +51,7 @@ export const Hero = () => {
 
       <div
         ref={fullDesc}
-        className="absolute bottom-[65dvw] left-0 right-0 pl-10 pr-30 text-[3dvw] opacity-0 text-left lg:text-right lg:text-[1.5dvw] lg:px-0 lg:bottom-auto lg:right-15 lg:left-auto lg:top-[35dvw]"
+        className="absolute max-md:top-[100dvw] max-md:bottom-[30dvw] left-0 right-0 pl-10 pr-30 text-[3dvw] opacity-0 text-left lg:text-right lg:text-[1.5dvw] lg:px-0 lg:bottom-auto lg:right-15 lg:left-auto lg:top-[35dvw]"
       >
         <p>
           Frontend-focused energetic tech professional

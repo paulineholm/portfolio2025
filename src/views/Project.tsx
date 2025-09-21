@@ -18,13 +18,15 @@ const Project = () => {
     <div className="relative min-h-screen">
       <div
         ref={bgRef}
-        className="absolute my-[2.5dvh] ml-[2.5dvh] top-0 left-0 w-full h-full bg-[var(--color-thina)] -z-10 opacity-0"
+        className="absolute my-[2.5dvh] top-0 left-0 w-full h-full bg-[var(--color-thina)] -z-10 opacity-0 lg:ml-[2.5dvh]"
       />
       {project ? (
         <main className="w-screen py-16">
-          <article className="text-center tracking-[2px]">
+          <article className="text-center leading-relaxed">
             <PageHead headline={project.title} />
-            <h2>{project.head}</h2>
+            <h2 className="max-md:px-1 max-md:pt-1.5 max-md:text-sm">
+              {project.head}
+            </h2>
           </article>
 
           <section className="w-[80%] max-w-[800px] mx-auto my-[5dvh]">
@@ -67,7 +69,9 @@ const Project = () => {
                     <FaLink />
                   </a>
                 ) : (
-                  <span>project not deployed, as it works with local API</span>
+                  <span className="max-md:text-xs">
+                    project not deployed, as it works with local API
+                  </span>
                 )}
               </div>
             </article>

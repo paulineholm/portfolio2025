@@ -18,13 +18,15 @@ const ProjectsMasonry = () => {
         columnClassName="!flex flex-col"
       >
         {projects.map((project) => (
-          <div key={project.id} className="relative mx-[0.8dvw] my-[1.5dvh]">
+          <div
+            key={project.id}
+            className="relative mx-[0.8dvw] my-[1.5dvh] max-md:pl-5"
+          >
             <img
               src={project.img}
               alt={project.title}
               className="rounded-[10px] w-[40vw] h-[40vh] object-cover
-                       md:w-[90vw] lg:w-[45vw]
-                       sm:w-full"
+                       max-md:w-full lg:w-[45vw]"
             />
             <ProjectCard
               id={project.id.toString()}

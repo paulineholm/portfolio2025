@@ -9,7 +9,7 @@ const TimeLine = () => {
   }, []);
 
   return (
-    <section className="w-screen items-center flex flex-col justify-center my-[7dvh]">
+    <section className="w-screen items-center flex flex-col justify-center my-[7dvh] max-md:pl-5">
       <ul
         ref={timelineRef}
         className="timeline timeline-snap-icon max-md:timeline-vertical timeline-horizontal opacity-0 scale-100"

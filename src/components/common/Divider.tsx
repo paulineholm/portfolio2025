@@ -26,7 +26,7 @@ const Divider: React.FC<DividerProps> = ({
 }) => {
   return (
     <hr
-      className={`${sizeClassMap[size]} ${className} mx-30 my-5 border-none`}
+      className={`${sizeClassMap[size]} ${className} border-none mx-30 my-5 max-md:mx-10 max-md:my-2.5`}
       style={colorStyles(color)}
       aria-label="Divider"
     />

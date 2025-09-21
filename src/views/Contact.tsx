@@ -20,15 +20,15 @@ const Contact = () => {
           alt="Cafe, Krystalgade"
           className="w-[37.5dvw] border-2 border-[var(--color-freshLime)] rounded-md ml-[2vw] md:block hidden"
         />
-        <article className="w-[62.5dvh] md:ml-[5dvw] flex flex-col justify-center">
+        <article className="w-[62.5dvh] flex flex-col justify-center ml-[5dvh] max-md:h-[75vh] max-md:ml-[2.5dvh]">
           <h1 className="leading-relaxed">don't be a stranger!</h1>
-          <p className="leading-normal">
+          <p className="leading-normal max-md:pt-5">
             I am always open for new challenges, people and knowledge
             <br />
             Reach out and let's have a coffee ☕
           </p>
           <br />
-          <p className="my-[2.5dvh] md:font-medium tracking-[1.7px] text-[var(--color-midnight)]">
+          <p className="my-[2.5dvh] md:font-medium tracking-[1px] text-[var(--color-midnight)]">
             <a
               href="mailto:pholm@tuta.io"
               className="hover:text-[var(--color-freshLime)]"

@@ -28,10 +28,17 @@ const Intro = () => {
         ref={bgRef}
         className="absolute mt-[2.5dvh] ml-5 top-0 right-0 h-screen bg-[var(--color-thina)] opacity-0 w-[95%] z-10 lg:w-8/12"
       />
-      <div ref={contentRef} className="absolute opacity-0 z-20 w-full">
-        <article className="leading-normal m-[5dvh] text-[var(--color-negev)] lg:m-[15dvh]">
-          <h1 className="uppercase font-medium">Cand. IT. Pauline Holm</h1>
-          <h2 className="font-light">Software Engineer & Tech Enthusiast</h2>
+      <div
+        ref={contentRef}
+        className="absolute opacity-0 z-15 w-full lg:w-8/12 right-0"
+      >
+        <article className="leading-loose m-[5dvh] lg:m-[15dvh] max-md:text-sm">
+          <h1 className="uppercase font-medium max-md:text-2xl">
+            Cand. IT. Pauline Holm
+          </h1>
+          <h2 className="font-light max-md:text-sm">
+            Software Engineer & Tech Enthusiast
+          </h2>
           <p className="pt-6 leading-relaxed">
             Frontend-focused energetic tech professional driven by learning and
             growth. Dedicated to delivering seamless, efficient, and
@@ -56,8 +63,8 @@ const Intro = () => {
             <br />
             Currently looking for new opportunities to rock the tech world! 👩🏻‍💻
           </p>
-          <h3 className="pt-7 pb-1.5">
-            <i>scroll toget to know me better</i>
+          <h3 className="pt-7 pb-1.5 max-md:text-xs">
+            <i>scroll to get to know me better</i>
           </h3>
           <Link
             to="/projects"

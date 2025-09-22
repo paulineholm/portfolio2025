@@ -159,7 +159,7 @@ const projects = [
     desc: "A simple portfolio built utilizing only HTML, CSS, and basic JavaScript. Created at the very beginning of my Web Developer education at Roskilde Technical College, it served as an introduction to fundamental web development concepts.",
     stack: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare />],
     stackTxt: "HTML, CSS, JavaScript",
-    link: "https://paulineholm.netlify.app", //TO DO: change link after deployment
+    link: "https://pholm.netlify.app",
     github: "https://github.com/paulineholm/holmpauline",
     date: "November 2020",
     meta: "School project",
@@ -204,7 +204,7 @@ const projects = [
     desc: "The first professional version of my portfolio, created after completing my Web Developer education at Roskilde Technical College. Built with React, Styled Components, Framer Motion and React Router, it presented my skills and projects in a modern, interactive and animated format. This portfolio played a key role in securing my first real-world programming positions and served as the foundation for my updated 2025 portfolio.",
     stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
     stackTxt: "React, Styled Components, React Router",
-    link: "https://www.figma.com/proto/UQvEnVt3PrlhVH9vGAwzXI/Mapcyfinal?node-id=0-1&t=k7cunj4pa5J2UMFs-1", //TO DO: edit source
+    link: "https://pholmv1.netlify.app",
     github: "https://github.com/paulineholm/portfolio2022",
     date: "August 2022",
     meta: "Portfolio",
@@ -216,11 +216,11 @@ const projects = [
     id: 11,
     title: "Portfolio 2025 (v2)",
     head: "Pauline Holm portfolio v2",
-    desc: "A mock-up developed as part of a university project, where the task was to improve upon the existing Portfolio concept. Based on user research and stakeholder discussions, the team introduced two new features: “Fun Facts” and “Green Events.” Both additions received highly positive feedback from our stakeholder, Oana. The project was carried out within the framework of the IT, Learning and Organizational Change master’s program at Aalborg University.",
+    desc: "The latest version of my portfolio, showcasing my growth and development as a frontend developer since 2022. This iteration features a complete redesign and rebuild using React, Styled Components, and React Router. The updated portfolio highlights my most recent projects, skills, and experiences, reflecting my current capabilities and aspirations in the tech industry.",
     stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
     stackTxt: "React, Styled Components, React Router",
-    link: "https://www.figma.com/proto/UQvEnVt3PrlhVH9vGAwzXI/Mapcyfinal?node-id=0-1&t=k7cunj4pa5J2UMFs-1", //TO DO: edit source link
-    github: "#",
+    link: "https://paulineholm.netlify.app/",
+    github: "https://github.com/paulineholm/portfolio2025",
     date: "September 2025",
     meta: "Portfolio",
     img: Portfoliov21,

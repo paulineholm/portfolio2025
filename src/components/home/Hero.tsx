@@ -51,7 +51,7 @@ export const Hero = () => {
 
       <div
         ref={fullDesc}
-        className="absolute max-md:top-[100dvw] max-md:bottom-[30dvw] left-0 right-0 pl-10 pr-30 text-[3dvw] opacity-0 text-left lg:text-right lg:text-[1.5dvw] lg:px-0 lg:bottom-auto lg:right-15 lg:left-auto lg:top-[35dvw]"
+        className="absolute bottom-[40dvw] sm:bottom-[15dvw] md:bottom-[10dvw] left-0 right-0 pl-10 pr-30 text-[3dvw] opacity-0 text-left lg:text-right lg:text-[1.5dvw] lg:px-0 lg:right-15 lg:left-auto lg:bottom-[7.5dvw]"
       >
         <p>
           Frontend-focused energetic tech professional

@@ -6,7 +6,6 @@ import testimonials from "../../assets/data/testimonials";
 import { FaLinkedinIn } from "react-icons/fa";
 
 const Testimonials = () => {
-  console.log(testimonials);
   return (
     <section className="w-screen my-[4vh] text-center md:h-[30vh]  sm:h-[50vh] mb-[5dvh]">
       <SectionHead text="people say about me..." />

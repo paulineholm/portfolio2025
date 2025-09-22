@@ -11,7 +11,9 @@ import {
   SiReactrouter,
   SiGatsby,
   SiFigma,
+  SiVite,
 } from "react-icons/si";
+import { BiLogoTailwindCss } from "react-icons/bi";
 import { GiWomanElfFace } from "react-icons/gi";
 import CPHNightClub from "../img/CPHNightClub.png";
 import CPHNightClub1 from "../img/mockupcphnightclub/nightclub1.png";
@@ -216,9 +218,9 @@ const projects = [
     id: 11,
     title: "Portfolio 2025 (v2)",
     head: "Pauline Holm portfolio v2",
-    desc: "The latest version of my portfolio, showcasing my growth and development as a frontend developer since 2022. This iteration features a complete redesign and rebuild using React, Styled Components, and React Router. The updated portfolio highlights my most recent projects, skills, and experiences, reflecting my current capabilities and aspirations in the tech industry.",
-    stack: [<FaReact />, <SiStyledcomponents />, <SiReactrouter />],
-    stackTxt: "React, Styled Components, React Router",
+    desc: "The latest version of my portfolio, showcasing my growth and development as a frontend developer since 2022. This iteration features a complete redesign and rebuild using React, Styled Components, and React Router. The updated portfolio highlights my most recent projects, skills, and experiences, reflecting my current capabilities and aspirations in the tech industry. In this project, I have incorporated beautiful fonts from https://www.fontshare.com",
+    stack: [<FaReact />, <SiVite />, <BiLogoTailwindCss />, <SiReactrouter />],
+    stackTxt: "React, Vite, Tailwind, React Router",
     link: "https://paulineholm.netlify.app/",
     github: "https://github.com/paulineholm/portfolio2025",
     date: "September 2025",

@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Pauline Holm - Portfolio 2025 🌸
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive portfolio website showcasing my journey as a frontend-focused software engineer. Built with React and featuring smooth animations, this portfolio highlights my projects, experience, and passion for creating exceptional digital experiences.
 
-## Available Scripts
+## 🎯 Purpose
 
-In the project directory, you can run:
+This portfolio serves as a comprehensive showcase of my work as a software engineer, featuring:
+- Professional project gallery with detailed case studies
+- Interactive timeline of my career journey
+- Technical skills and stack overview
+- Client testimonials and recommendations
+- Personal story and background
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend Framework
+- ⚛️ **[React](https://reactjs.org/)** - Component-based UI library
+- 🚀 **[Vite](https://vitejs.dev/)** - Fast build tool and development server
+- 📝 **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Styling & UI
+- 🎨 **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- 🌼 **[DaisyUI](https://daisyui.com/)** - Tailwind CSS components
 
-### `npm test`
+### Routing & Navigation
+- 🧭 **[React Router](https://reactrouter.com/)** - Client-side routing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Icons & Assets
+- 🎯 **[React Icons](https://react-icons.github.io/react-icons/)** - Icon library
+- 🔄 **[Swiper](https://swiperjs.com/)** - Touch slider component
+- 🧱 **[React Masonry CSS](https://github.com/paulcollett/react-masonry-css)** - Masonry layout
+- 🍔 **[React Burger Menu](https://github.com/negomi/react-burger-menu)** - Off-canvas sidebar menu
 
-### `npm run build`
+### Development Tools
+- 📦 **[npm](https://www.npmjs.com/)** - Package manager
+- 🎨 **[Prettier](https://prettier.io/)** - Code formatting
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. Clone the repository
+```bash
+git clone https://github.com/paulineholm/portfolio2025.git
+cd portfolio2025
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install dependencies
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Start the development server
+```bash
+npm run dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📝 Available Scripts
 
-## Learn More
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run type-check` - Run TypeScript type checking
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🎨 Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- ✨ Smooth animations and transitions using CSS keyframes
+- 📱 Fully responsive design
+- 🎯 Interactive project showcase with detailed case studies
+- 📊 Professional timeline component
+- 🎪 Testimonials carousel
+- 🍔 Mobile-friendly burger menu
+- 🎨 Custom color scheme and typography
+- ⚡ Fast loading and optimized performance
 
-### Code Splitting
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+src/
+├── components/          # Reusable UI components
+│   ├── about/          # About page components
+│   ├── common/         # Shared components
+│   ├── home/           # Home page components
+│   └── projects/       # Project-related components
+├── views/              # Page components
+├── utils/              # Helper functions and hooks
+├── assets/             # Static assets (images, data)
+├── styles/             # Global styles
+├── types/              # TypeScript type definitions
+└── fonts/              # Custom font files
+```
 
-### Analyzing the Bundle Size
+## 🌐 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The portfolio is deployed on [Netlify](https://www.netlify.com/) and available at:
+**[paulineholm.netlify.app](https://paulineholm.netlify.app/)**
 
-### Making a Progressive Web App
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is private and serves as a personal portfolio. All rights reserved.
 
-### Advanced Configuration
+## 📞 Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- 📧 Email: [pholm@tuta.io](mailto:pholm@tuta.io)
+- 💼 LinkedIn: [linkedin.com/in/paulineholm](https://www.linkedin.com/in/paulineholm/)
+- 🐙 GitHub: [github.com/paulineholm](https://github.com/paulineholm)
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*Handcrafted with ♡ by Pauline Holm* 🌸

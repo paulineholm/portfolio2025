@@ -9,7 +9,7 @@ const Error = () => {
         className="w-[30vw] justify-center rounded border-2 border-[var(--color-thina)]"
       />
       <p className="w-[50vw] py-[30vh] px-[2vw] text-center leading-[2.3]">
-        Uuups, it is a wrong path!
+        Oops, it is a wrong path!
         <br />
         Come back{" "}
         <a href="/" className="text-[var(--color-thina)] hover:underline">

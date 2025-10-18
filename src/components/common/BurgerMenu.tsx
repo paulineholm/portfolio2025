@@ -57,28 +57,28 @@ const BurgerMenu = () => {
       >
         <a
           id="home"
-          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 hover:text-shimmering-blush transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
+          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
           href="/"
         >
           Home
         </a>
         <a
           id="about"
-          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 hover:text-shimmering-blush transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
+          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
           href="/about"
         >
           About
         </a>
         <a
           id="projects"
-          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 hover:text-shimmering-blush transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
+          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
           href="/projects"
         >
           Projects
         </a>
         <a
           id="contact"
-          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 hover:text-shimmering-blush transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
+          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
           href="/contact"
         >
           Contact

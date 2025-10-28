@@ -26,6 +26,9 @@ const NavMenu = () => {
         <NavLink to="/projects" className={getLinkClassStyle}>
           Projects
         </NavLink>
+        <NavLink to="/bubbabot" className={getLinkClassStyle}>
+          BubbaBot 🤖
+        </NavLink>
         <NavLink to="/contact" className={getLinkClassStyle}>
           Contact
         </NavLink>

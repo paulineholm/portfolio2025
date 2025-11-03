@@ -1,0 +1,227 @@
+import { Handler } from "@netlify/functions";
+import { readFileSync } from "fs";
+import { join } from "path";
+import { InferenceClient } from "@huggingface/inference";
+import axios from "axios";
+import * as cheerio from "cheerio";
+import { PUBLIC_RESOURCES } from "../../src/assets/data/context/publicResources";
+
+const loadContext = (file: string) => {
+  const contextPath = join(
+    process.cwd(),
+    "src",
+    "assets",
+    "data",
+    "context",
+    file
+  );
+  return JSON.parse(readFileSync(contextPath, "utf-8"));
+};
+
+const buildStaticContext = () => {
+  const masterthesisData = loadContext("masterthesis.json");
+  const generalData = loadContext("general.json");
+  const professionalData = loadContext("professional.json");
+  const contactData = loadContext("contact.json");
+  const cvData = loadContext("cv.json");
+
+  return `
+    Master Thesis Context: ${masterthesisData.masterthesisContext}
+    General Context: ${generalData.generalContext}
+    Professional Context: ${professionalData.professionalContext}
+    Contact Context: ${contactData.contact}
+    CV Context: ${cvData.cvContext}
+  `.trim();
+};
+
+// Simple cache
+const cache: Record<string, { content: string; timestamp: number }> = {};
+const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+// Fetch content from URL
+async function fetchUrl(url: string): Promise<string | null> {
+  // Check cache
+  const cached = cache[url];
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    console.log(`Cache hit: ${url}`);
+    return cached.content;
+  }
+
+  try {
+    console.log(`Fetching: ${url}`);
+    const { data } = await axios.get(url, { timeout: 5000 });
+    const $ = cheerio.load(data);
+
+    $("script, style, nav, footer").remove();
+
+    const content = $("h1, h2, h3, p, li")
+      .map((_, el) => $(el).text())
+      .get()
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 1500);
+
+    cache[url] = { content, timestamp: Date.now() };
+    return content;
+  } catch (err) {
+    console.warn(`Failed to fetch ${url}`);
+    return null;
+  }
+}
+
+// Build context with dynamic fetching
+async function buildContext(question: string) {
+  const staticContext = buildStaticContext();
+
+  // Find relevant resources
+  const questionLower = question.toLowerCase();
+  const relevantResources = PUBLIC_RESOURCES.filter((resource) =>
+    resource.keywords.some((keyword) => questionLower.includes(keyword))
+  );
+
+  if (relevantResources.length === 0) {
+    return staticContext;
+  }
+
+  console.log(`Found ${relevantResources.length} relevant resources`);
+
+  // Fetch content from relevant resources
+  const fetchPromises = relevantResources.map((r) => fetchUrl(r.url));
+  const contents = await Promise.all(fetchPromises);
+
+  const dynamicContext = contents
+    .filter((content) => content !== null)
+    .map((content, i) => `[${relevantResources[i].name}]: ${content}`)
+    .join("\n\n");
+
+  return dynamicContext
+    ? `${staticContext}\n\n=== LIVE INFO ===\n${dynamicContext}`
+    : staticContext;
+}
+
+// In-memory rate limiting
+const recentUsers: Record<string, number> = {};
+const RATE_LIMIT_MS = 5000;
+
+setInterval(() => {
+  const now = Date.now();
+  Object.keys(recentUsers).forEach((ip) => {
+    if (now - recentUsers[ip] > 60000) {
+      delete recentUsers[ip];
+    }
+  });
+}, 600000);
+
+export const handler: Handler = async (event) => {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+  };
+
+  if (event.httpMethod === "OPTIONS") {
+    return { statusCode: 200, headers, body: "" };
+  }
+
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ error: "Method not allowed" }),
+    };
+  }
+
+  // Rate limiting
+  const ip =
+    event.headers["x-nf-client-connection-ip"] ||
+    event.headers["x-forwarded-for"] ||
+    event.headers["client-ip"] ||
+    "unknown";
+  const now = Date.now();
+
+  if (recentUsers[ip] && now - recentUsers[ip] < RATE_LIMIT_MS) {
+    const waitTime = Math.ceil(
+      (RATE_LIMIT_MS - (now - recentUsers[ip])) / 1000
+    );
+    return {
+      statusCode: 429,
+      headers: {
+        ...headers,
+        "Retry-After": String(waitTime),
+      },
+      body: JSON.stringify({
+        error: "Please wait a few seconds before asking again.",
+        retryAfter: waitTime,
+      }),
+    };
+  }
+
+  recentUsers[ip] = now;
+
+  try {
+    const { question } = JSON.parse(event.body || "{}");
+
+    if (!question || question.trim().length === 0) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: "Question is required" }),
+      };
+    }
+
+    if (!process.env.HUGGINGFACE_API_KEY) {
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ error: "API key not configured" }),
+      };
+    }
+
+    const client = new InferenceClient(process.env.HUGGINGFACE_API_KEY);
+
+    // Build context dynamically based on question
+    const context = await buildContext(question);
+
+    const response = await client.chatCompletion({
+      model: "Qwen/Qwen2.5-72B-Instruct",
+      messages: [
+        {
+          role: "system",
+          content: `You are BubbaBot, a friendly portfolio assistant for Pauline. Answer questions using ONLY the context provided below. Always respond in first person, warmly, casually but clearly - keep responses to 2-3 sentences maximum. CONTEXT:${context}`,
+        },
+        {
+          role: "user",
+          content: question,
+        },
+      ],
+      max_tokens: 150,
+      temperature: 0.5,
+      top_p: 0.9,
+      repetition_penalty: 1.1,
+    });
+
+    const answer =
+      response.choices?.[0]?.message?.content?.trim() ||
+      "Sorry, I couldn't generate a response.";
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ answer }),
+    };
+  } catch (err: any) {
+    console.error("HuggingFace API Error:", err);
+    console.error("Error message:", err.message);
+    console.error("Error details:", err.httpResponse?.body);
+
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error:
+          "Sorry, I'm having trouble processing your question right now. Please try again!",
+      }),
+    };
+  }
+};

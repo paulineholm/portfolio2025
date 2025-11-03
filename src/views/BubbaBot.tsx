@@ -22,6 +22,17 @@ const BubbaBot = () => {
             Bubba is RAG-lite chatbot responding out of provided personal
             context
           </h2>
+          <p className="italic">
+            made with{" "}
+            <a
+              href="https://huggingface.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              HuggingFace 🤗
+            </a>
+          </p>
         </div>
 
         <section className="w-[80%] max-w-[1200px] mx-auto my-[5dvh]">

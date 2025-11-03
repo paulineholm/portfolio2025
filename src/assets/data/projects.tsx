@@ -62,7 +62,6 @@ import Portfoliov11 from "../img/mockupportfoliov1/portfoliov11.png";
 import Portfoliov12 from "../img/mockupportfoliov1/portfoliov12.png";
 import Portfoliov13 from "../img/mockupportfoliov1/portfoliov13.png";
 import Portfoliov14 from "../img/mockupportfoliov1/portfoliov14.png";
-import Portfoliov15 from "../img/mockupportfoliov1/portfoliov15.png";
 import Portfoliov21 from "../img/mockupportfoliov2/portfoliov21.png";
 import Portfoliov22 from "../img/mockupportfoliov2/portfoliov22.png";
 

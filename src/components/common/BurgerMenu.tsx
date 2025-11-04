@@ -77,6 +77,13 @@ const BurgerMenu = () => {
           Projects
         </a>
         <a
+          id="bubbabot"
+          className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
+          href="/bubbabot"
+        >
+          BubbaBot 🤖
+        </a>
+        <a
           id="contact"
           className="block text-cherry-blossom-pink text-2xl uppercase tracking-wider py-7 transition-all duration-200 hover:-translate-y-0.5 hover:scale-105"
           href="/contact"

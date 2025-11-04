@@ -1,40 +1,23 @@
 import { Handler } from "@netlify/functions";
-import { readFileSync } from "fs";
-import { join } from "path";
 import { InferenceClient } from "@huggingface/inference";
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { PUBLIC_RESOURCES } from "../../src/assets/data/context/publicResources";
 
-const loadContext = (file: string) => {
-  const contextPath = join(
-    process.cwd(),
-    "src",
-    "assets",
-    "data",
-    "context",
-    file
-  );
-  return JSON.parse(readFileSync(contextPath, "utf-8"));
-};
+// Import context data
+import { PUBLIC_RESOURCES } from "../../src/assets/data/context/publicResources";
+import { contactContext } from "../../src/assets/data/context/contact";
+import { masterthesisContext } from "../../src/assets/data/context/masterthesis";
+import { generalContext } from "../../src/assets/data/context/general";
+import { professionalContext } from "../../src/assets/data/context/professional";
+import { cv } from "../../src/assets/data/context/cv";
 
 const buildStaticContext = () => {
-  const masterthesisData = loadContext("masterthesis.json");
-  const generalData = loadContext("general.json");
-  const professionalData = loadContext("professional.json");
-  const contactData = loadContext("contact.json");
-  const cvData = loadContext("cv.json");
-
   return `
-    Master Thesis Context: ${masterthesisData.masterthesisContext}
-    General Context: ${generalData.generalContext}
-    Professional Context: ${professionalData.professionalContext}
-    Contact Context: ${contactData.contact}
-    CV Context: Name: ${cvData.name || ""}, LinkedIn: ${
-    cvData.linkedin || ""
-  }, Summary: ${cvData.summary_description || ""}, Email: ${
-    cvData.email || ""
-  }, Phone: ${cvData.phone || ""}
+    Master Thesis Context: ${masterthesisContext}
+    General Context: ${generalContext}
+    Professional Context: ${professionalContext}
+    Contact Context: ${contactContext}
+    CV Context: Name: ${cv.name}, LinkedIn: ${cv.linkedin}, Summary: ${cv.summary.description}, Email: ${cv.email}, Role: ${cv.summary.role}
   `.trim();
 };
 

@@ -44,7 +44,7 @@ const Contact = () => {
             </a>{" "}
             /{" "}
             <a
-              href="https://drive.google.com/file/d/1tcbNPqgeSQJujUDcFZ_doFRCjWxIzut_/view"
+              href="https://paulineholm.netlify.app/cv_pholm_itgirl2025.pdf"
               className="hover:text-[var(--color-freshLime)]"
             >
               &lt;resume /&gt;

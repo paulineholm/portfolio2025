@@ -7,6 +7,7 @@ import Home from "./views/Home";
 import About from "./views/About";
 import Projects from "./views/Projects";
 import Contact from "./views/Contact";
+import BubbaBot from "./views/BubbaBot";
 import Project from "./views/Project";
 import Error from "./views/Error";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/project/:id" element={<Project />} />
+          <Route path="/bubbabot" element={<BubbaBot />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Error />} />
         </Routes>

@@ -19,7 +19,7 @@ const BubbaBot = () => {
         <div className="text-center mb-8">
           <h1 className="text-center pt-[5dvh]">BubbaBot 🤖</h1>
           <h2 className="max-md:px-1 max-md:pt-1.5 max-md:text-sm">
-            Bubba is RAG-lite chatbot responding out of provided personal
+            Bubba is a RAG-lite chatbot responding based on provided personal
             context
           </h2>
           <p className="italic">

@@ -32,6 +32,8 @@ const BubbaChat = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [lastRequestTime, setLastRequestTime] = useState<number>(0);
+  const RATE_LIMIT_MS = 5000;
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -96,6 +98,20 @@ const BubbaChat = () => {
   };
 
   const handleSendMessage = async (message: string) => {
+    // Check rate limit FIRST
+    const now = Date.now();
+    const timeSinceLastRequest = now - lastRequestTime;
+
+    if (timeSinceLastRequest < RATE_LIMIT_MS) {
+      const waitTime = Math.ceil((RATE_LIMIT_MS - timeSinceLastRequest) / 1000);
+      addMessage(
+        `Please wait ${waitTime} seconds before asking again. ⏳`,
+        "bubba"
+      );
+      return; // Exit early - don't add user message or set loading
+    }
+
+    // Now proceed with normal flow
     if (showSuggestions) {
       setShowSuggestions(false);
       localStorage.setItem(SUGGESTIONS_KEY, "true");
@@ -103,6 +119,7 @@ const BubbaChat = () => {
 
     addMessage(message, "user");
     setIsLoading(true);
+    setLastRequestTime(now);
 
     try {
       const response = await fetch("/.netlify/functions/AIinteg", {

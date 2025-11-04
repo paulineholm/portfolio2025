@@ -30,7 +30,11 @@ const buildStaticContext = () => {
     General Context: ${generalData.generalContext}
     Professional Context: ${professionalData.professionalContext}
     Contact Context: ${contactData.contact}
-    CV Context: ${cvData.cvContext}
+    CV Context: Name: ${cvData.name || ""}, LinkedIn: ${
+    cvData.linkedin || ""
+  }, Summary: ${cvData.summary_description || ""}, Email: ${
+    cvData.email || ""
+  }, Phone: ${cvData.phone || ""}
   `.trim();
 };
 
@@ -100,19 +104,6 @@ async function buildContext(question: string) {
     : staticContext;
 }
 
-// In-memory rate limiting
-const recentUsers: Record<string, number> = {};
-const RATE_LIMIT_MS = 5000;
-
-setInterval(() => {
-  const now = Date.now();
-  Object.keys(recentUsers).forEach((ip) => {
-    if (now - recentUsers[ip] > 60000) {
-      delete recentUsers[ip];
-    }
-  });
-}, 600000);
-
 export const handler: Handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
@@ -131,33 +122,6 @@ export const handler: Handler = async (event) => {
       body: JSON.stringify({ error: "Method not allowed" }),
     };
   }
-
-  // Rate limiting
-  const ip =
-    event.headers["x-nf-client-connection-ip"] ||
-    event.headers["x-forwarded-for"] ||
-    event.headers["client-ip"] ||
-    "unknown";
-  const now = Date.now();
-
-  if (recentUsers[ip] && now - recentUsers[ip] < RATE_LIMIT_MS) {
-    const waitTime = Math.ceil(
-      (RATE_LIMIT_MS - (now - recentUsers[ip])) / 1000
-    );
-    return {
-      statusCode: 429,
-      headers: {
-        ...headers,
-        "Retry-After": String(waitTime),
-      },
-      body: JSON.stringify({
-        error: "Please wait a few seconds before asking again.",
-        retryAfter: waitTime,
-      }),
-    };
-  }
-
-  recentUsers[ip] = now;
 
   try {
     const { question } = JSON.parse(event.body || "{}");

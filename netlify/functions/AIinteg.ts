@@ -9,6 +9,7 @@ import { contactContext } from "../../src/assets/data/context/contact";
 import { masterthesisContext } from "../../src/assets/data/context/masterthesis";
 import { generalContext } from "../../src/assets/data/context/general";
 import { professionalContext } from "../../src/assets/data/context/professional";
+import { personalityContext } from "../../src/assets/data/context/personality";
 import { cv } from "../../src/assets/data/context/cv";
 
 const buildStaticContext = () => {
@@ -17,6 +18,7 @@ const buildStaticContext = () => {
     General Context: ${generalContext}
     Professional Context: ${professionalContext}
     Contact Context: ${contactContext}
+    Personality Context: ${personalityContext}
     CV Context: Name: ${cv.name}, LinkedIn: ${cv.linkedin}, Summary: ${cv.summary.description}, Email: ${cv.email}, Role: ${cv.summary.role}
   `.trim();
 };

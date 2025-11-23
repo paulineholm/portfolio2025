@@ -27,4 +27,23 @@ export const PUBLIC_RESOURCES: PublicResource[] = [
     url: "https://github.com/paulineholm",
     keywords: ["github", "code", "repositories", "repos"],
   },
+  {
+    name: "Calendly",
+    url: "https://calendly.com/pholm-tuta/30min",
+    keywords: [
+      "calendly",
+      "schedule",
+      "meeting",
+      "appointment",
+      "coffee",
+      "chat",
+      "talk",
+      "connect",
+      "discuss",
+      "call",
+      "opportunities",
+      "collaboration",
+      "networking",
+    ],
+  },
 ];

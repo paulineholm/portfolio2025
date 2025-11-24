@@ -108,8 +108,20 @@ export const handler: Handler = async (event) => {
     };
   }
 
+  const reqStartTime = Date.now();
+
   try {
-    const { question } = JSON.parse(event.body || "{}");
+    const { question, conversationId } = JSON.parse(event.body || "{}");
+
+    // for logging purposes - to be deleted once langfuse is on
+    console.log(
+      JSON.stringify({
+        type: "chat_request",
+        timestamp: new Date().toISOString(),
+        questionLength: question.length,
+        conversationId: conversationId || "none",
+      })
+    );
 
     if (!question || question.trim().length === 0) {
       return {
@@ -153,6 +165,16 @@ export const handler: Handler = async (event) => {
     const answer =
       response.choices?.[0]?.message?.content?.trim() ||
       "Sorry, I couldn't generate a response.";
+
+    console.log(
+      JSON.stringify({
+        type: "chat_response",
+        timestamp: new Date().toISOString(),
+        answerLength: answer.length,
+        contextLength: context.length,
+        latencyMs: Date.now() - reqStartTime,
+      })
+    );
 
     return {
       statusCode: 200,

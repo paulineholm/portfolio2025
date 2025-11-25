@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { addAnimation } from "../utils/helpers";
 import BubbaChat from "../components/bubbabot/BubbaChat";
+import BubbaPrivacy from "../components/bubbabot/BubbaPrivacy";
 
 const BubbaBot = () => {
   const bgRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,9 @@ const BubbaBot = () => {
 
         <section className="w-[80%] max-w-[1200px] mx-auto my-[5dvh]">
           <BubbaChat />
+        </section>
+        <section className="w-[80%] max-w-[800px] mx-auto my-[5dvh] text-center">
+          <BubbaPrivacy />
         </section>
       </main>
     </div>

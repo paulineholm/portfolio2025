@@ -33,6 +33,9 @@ const BubbaChat = () => {
   const [isInitializing, setIsInitializing] = useState(true);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [lastRequestTime, setLastRequestTime] = useState<number>(0);
+  const [conversationId] = useState<string>(
+    () => `conv-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`
+  );
   const RATE_LIMIT_MS = 5000;
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -125,7 +128,12 @@ const BubbaChat = () => {
       const response = await fetch("/.netlify/functions/AIinteg", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: message }),
+        body: JSON.stringify({
+          question: message,
+          conversationId: conversationId,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          locale: navigator.language,
+        }),
       });
 
       const data = await response.json();

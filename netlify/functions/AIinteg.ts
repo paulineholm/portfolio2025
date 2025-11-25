@@ -1,7 +1,13 @@
-import { Handler } from "@netlify/functions";
+import "./instrumentation";
+import type { Handler } from "@netlify/functions";
 import { InferenceClient } from "@huggingface/inference";
 import axios from "axios";
 import * as cheerio from "cheerio";
+import {
+  observe,
+  updateActiveTrace,
+  updateActiveObservation,
+} from "@langfuse/tracing";
 
 // Import context data
 import { PUBLIC_RESOURCES } from "../../src/assets/data/context/publicResources";
@@ -89,110 +95,137 @@ async function buildContext(question: string) {
     : staticContext;
 }
 
-export const handler: Handler = async (event) => {
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-  };
-
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, headers, body: "" };
-  }
-
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: "Method not allowed" }),
+export const handler: Handler = observe(
+  async (event) => {
+    const headers = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
     };
-  }
 
-  const reqStartTime = Date.now();
+    if (event.httpMethod === "OPTIONS") {
+      return { statusCode: 200, headers, body: "" };
+    }
 
-  try {
-    const { question, conversationId } = JSON.parse(event.body || "{}");
-
-    // for logging purposes - to be deleted once langfuse is on
-    console.log(
-      JSON.stringify({
-        type: "chat_request",
-        timestamp: new Date().toISOString(),
-        questionLength: question.length,
-        conversationId: conversationId || "none",
-      })
-    );
-
-    if (!question || question.trim().length === 0) {
+    if (event.httpMethod !== "POST") {
       return {
-        statusCode: 400,
+        statusCode: 405,
         headers,
-        body: JSON.stringify({ error: "Question is required" }),
+        body: JSON.stringify({ error: "Method not allowed" }),
       };
     }
 
-    if (!process.env.HUGGINGFACE_API_KEY) {
+    const reqStartTime = Date.now();
+
+    try {
+      const { question, conversationId, timezone, locale } = JSON.parse(
+        event.body || "{}"
+      );
+
+      if (!question || question.trim().length === 0) {
+        return {
+          statusCode: 400,
+          headers,
+          body: JSON.stringify({ error: "Question is required" }),
+        };
+      }
+
+      if (!process.env.HUGGINGFACE_API_KEY) {
+        return {
+          statusCode: 500,
+          headers,
+          body: JSON.stringify({ error: "API key not configured" }),
+        };
+      }
+
+      // Langfuse: Update trace
+      updateActiveTrace({
+        name: "bubba-bot",
+        sessionId: conversationId || "anonymous",
+        input: question,
+        metadata: { environment: "production" },
+      });
+
+      // Langfuse: Update observation input
+      updateActiveObservation({
+        input: {
+          question,
+          conversationId: conversationId || "anonymous",
+          timezone: timezone || "unknown",
+          locale: locale || "unknown",
+        },
+        metadata: {
+          provider: "hugging-face",
+          model: process.env.LLM_MAIN_MODEL,
+        },
+      });
+
+      const client = new InferenceClient(process.env.HUGGINGFACE_API_KEY);
+
+      // Build context dynamically based on question
+      const context = await buildContext(question);
+
+      const response = await client.chatCompletion({
+        model: process.env.LLM_MAIN_MODEL,
+        messages: [
+          {
+            role: "system",
+            content: `You are BubbaBot, a friendly portfolio assistant for Pauline. Answer questions using ONLY the context provided below. Always respond in first person, warmly, casually but clearly - keep responses to 2-3 sentences maximum. CONTEXT:${context}`,
+          },
+          {
+            role: "user",
+            content: question,
+          },
+        ],
+        max_tokens: 150,
+        temperature: 0.5,
+        top_p: 0.9,
+        repetition_penalty: 1.1,
+      });
+
+      const answer =
+        response.choices?.[0]?.message?.content?.trim() ||
+        "Sorry, I couldn't generate a response.";
+
+      // Langfuse: Update observation output
+      updateActiveObservation({
+        output: {
+          answer,
+          conversationId: conversationId || "anonymous",
+        },
+        metadata: {
+          provider: "hugging-face",
+          model: process.env.LLM_MAIN_MODEL,
+        },
+      });
+
+      // Langfuse: Update trace output
+      updateActiveTrace({
+        output: {
+          answer,
+          conversationId: conversationId || "anonymous",
+        },
+      });
+
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({ answer }),
+      };
+    } catch (err: any) {
+      console.error("HuggingFace API Error:", err);
+      console.error("Error message:", err.message);
+      console.error("Error details:", err.httpResponse?.body);
+
       return {
         statusCode: 500,
         headers,
-        body: JSON.stringify({ error: "API key not configured" }),
+        body: JSON.stringify({
+          error:
+            "Sorry, I'm having trouble processing your question right now. Please try again!",
+        }),
       };
     }
-
-    const client = new InferenceClient(process.env.HUGGINGFACE_API_KEY);
-
-    // Build context dynamically based on question
-    const context = await buildContext(question);
-
-    const response = await client.chatCompletion({
-      model: "Qwen/Qwen2.5-72B-Instruct",
-      messages: [
-        {
-          role: "system",
-          content: `You are BubbaBot, a friendly portfolio assistant for Pauline. Answer questions using ONLY the context provided below. Always respond in first person, warmly, casually but clearly - keep responses to 2-3 sentences maximum. CONTEXT:${context}`,
-        },
-        {
-          role: "user",
-          content: question,
-        },
-      ],
-      max_tokens: 150,
-      temperature: 0.5,
-      top_p: 0.9,
-      repetition_penalty: 1.1,
-    });
-
-    const answer =
-      response.choices?.[0]?.message?.content?.trim() ||
-      "Sorry, I couldn't generate a response.";
-
-    console.log(
-      JSON.stringify({
-        type: "chat_response",
-        timestamp: new Date().toISOString(),
-        answerLength: answer.length,
-        contextLength: context.length,
-        latencyMs: Date.now() - reqStartTime,
-      })
-    );
-
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ answer }),
-    };
-  } catch (err: any) {
-    console.error("HuggingFace API Error:", err);
-    console.error("Error message:", err.message);
-    console.error("Error details:", err.httpResponse?.body);
-
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({
-        error:
-          "Sorry, I'm having trouble processing your question right now. Please try again!",
-      }),
-    };
-  }
-};
+  },
+  { name: "bubba-bot-question" }
+);

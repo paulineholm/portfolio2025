@@ -5,6 +5,9 @@
   "type": "module",
   "dependencies": {
     "@huggingface/inference": "^4.13.0",
+    "@langfuse/otel": "^4.4.2",
+    "@langfuse/tracing": "^4.4.2",
+    "@opentelemetry/sdk-node": "^0.208.0",
     "@tailwindcss/vite": "^4.1.13",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",

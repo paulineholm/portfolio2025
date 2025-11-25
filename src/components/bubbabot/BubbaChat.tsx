@@ -131,6 +131,8 @@ const BubbaChat = () => {
         body: JSON.stringify({
           question: message,
           conversationId: conversationId,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          locale: navigator.language,
         }),
       });
 

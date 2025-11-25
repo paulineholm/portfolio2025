@@ -115,8 +115,6 @@ export const handler: Handler = observe(
       };
     }
 
-    const reqStartTime = Date.now();
-
     try {
       const { question, conversationId, timezone, locale } = JSON.parse(
         event.body || "{}"

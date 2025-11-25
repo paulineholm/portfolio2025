@@ -9,10 +9,10 @@ const BubbaPrivacy = () => {
         <em>
           is designed with your privacy in mind. To improve the chatbot’s
           reliability, performance measuring, safety, and overall user
-          experience, your messages, including approximate geolocation, may be
-          processed by third-party services like <ins>HuggingFace</ins> or{" "}
-          <ins>Langfuse</ins>. No personal data is stored or shared beyond this
-          scope.
+          experience, your messages, including timezone information and locale,
+          may be processed by third-party services like <ins>HuggingFace</ins>{" "}
+          or <ins>Langfuse</ins>. No personal data is stored or shared beyond
+          this scope.
           <br />
           <br />
           By using BubbaBot, you consent to this processing. Conversation logs

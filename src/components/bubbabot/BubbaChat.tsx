@@ -166,6 +166,30 @@ const BubbaChat = () => {
     }
   };
 
+  const handleFeedbackSubmit = async (
+    messageId: string,
+    feedback: { rating: "positive" | "negative"; comment?: string }
+  ) => {
+    try {
+      await fetch("/.netlify/functions/AIinteg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          conversationId: conversationId,
+          feedback: {
+            messageId,
+            rating: feedback.rating,
+            comment: feedback.comment,
+          },
+        }),
+      });
+
+      console.log("Feedback submitted successfully");
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+    }
+  };
+
   const handleSuggestionClick = (question: string) => {
     handleSendMessage(question);
   };
@@ -225,6 +249,9 @@ const BubbaChat = () => {
                 message={message.content}
                 sender={message.sender}
                 timeStamp={message.timestamp}
+                messageId={message.id}
+                conversationId={conversationId}
+                onFeedbackSubmit={handleFeedbackSubmit}
               />
             ))}
 

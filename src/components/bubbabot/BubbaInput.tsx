@@ -48,7 +48,7 @@ const BubbaInput = ({
               : message.length > 150
               ? "text-yellow-500"
               : "text-gray-500"
-          }`}
+          } hidden sm:block`}
         >
           {message.length}/200
         </div>

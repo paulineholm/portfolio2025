@@ -7,7 +7,6 @@ import {
 
 interface BubbaFeedbackProps {
   messageId: string;
-  conversationId: string;
   onFeedbackSubmit: (
     messageId: string,
     feedback: {
@@ -17,11 +16,7 @@ interface BubbaFeedbackProps {
   ) => void;
 }
 
-const BubbaFeedback = ({
-  messageId,
-  conversationId,
-  onFeedbackSubmit,
-}: BubbaFeedbackProps) => {
+const BubbaFeedback = ({ messageId, onFeedbackSubmit }: BubbaFeedbackProps) => {
   const [selectedRating, setSelectedRating] = useState<
     "positive" | "negative" | null
   >(null);

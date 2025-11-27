@@ -106,7 +106,6 @@ const BubbaMsg = ({
           <div className="chat-footer mt-2.5">
             <BubbaFeedback
               messageId={messageId}
-              conversationId={conversationId}
               onFeedbackSubmit={onFeedbackSubmit}
             />
           </div>

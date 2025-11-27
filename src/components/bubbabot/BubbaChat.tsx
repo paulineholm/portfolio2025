@@ -188,8 +188,6 @@ const BubbaChat = ({ onPrivacyClick }: BubbaChatProps) => {
           },
         }),
       });
-
-      console.log("Feedback submitted successfully");
     } catch (error) {
       console.error("Error submitting feedback:", error);
     }

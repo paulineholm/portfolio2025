@@ -1,12 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import BubbaInput from "./BubbaInput";
 import BubbaMsg from "./BubbaMsg";
+import { MdOutlinePrivacyTip } from "react-icons/md";
 
 interface Message {
   id: string;
   content: string;
   sender: "bubba" | "user";
   timestamp: Date;
+}
+
+interface BubbaChatProps {
+  onPrivacyClick?: () => void;
 }
 
 const INITIAL_MESSAGE: Message = {
@@ -27,7 +32,7 @@ const SUGGESTED_QUESTIONS = [
 const STORAGE_KEY = "bubbabot_chat_history";
 const SUGGESTIONS_KEY = "bubbabot_suggestions_shown";
 
-const BubbaChat = () => {
+const BubbaChat = ({ onPrivacyClick }: BubbaChatProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
@@ -215,15 +220,25 @@ const BubbaChat = () => {
             Here to help you get to know Pauline better! ✨
           </p>
         </div>
-        {messages.length > 1 && (
+
+        <div className="flex items-center gap-1">
+          {messages.length > 1 && (
+            <button
+              onClick={handleClearChat}
+              className="btn btn-ghost btn-sm text-primary-content hover:bg-primary-focus"
+              title="Clear chat history"
+            >
+              🗑️
+            </button>
+          )}
           <button
-            onClick={handleClearChat}
+            onClick={onPrivacyClick}
             className="btn btn-ghost btn-sm text-primary-content hover:bg-primary-focus"
-            title="Clear chat history"
+            title="View privacy policy"
           >
-            🗑️
+            <MdOutlinePrivacyTip className="w-5 h-5" />
           </button>
-        )}
+        </div>
       </div>
 
       <div

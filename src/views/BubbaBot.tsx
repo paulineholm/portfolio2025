@@ -5,10 +5,15 @@ import BubbaPrivacy from "../components/bubbabot/BubbaPrivacy";
 
 const BubbaBot = () => {
   const bgRef = useRef<HTMLDivElement>(null);
+  const privacyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     addAnimation(bgRef.current, "animate-slideInRight", 0);
   }, []);
+
+  const scrollToPrivacy = () => {
+    privacyRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -36,9 +41,12 @@ const BubbaBot = () => {
         </div>
 
         <section className="w-[80%] max-w-[1200px] mx-auto my-[5dvh]">
-          <BubbaChat />
+          <BubbaChat onPrivacyClick={scrollToPrivacy} />
         </section>
-        <section className="w-[80%] max-w-[800px] mx-auto my-[5dvh] text-center">
+        <section
+          ref={privacyRef}
+          className="w-[80%] max-w-[800px] mx-auto my-[5dvh] text-center"
+        >
           <BubbaPrivacy />
         </section>
       </main>

@@ -155,43 +155,79 @@ export const handler: Handler = observe(
         // Build context dynamically based on question
         const context = await buildContext(question);
 
-        const response = await client.chatCompletion({
-          model: process.env.LLM_MAIN_MODEL,
-          messages: [
-            {
-              role: "system",
-              content: `You are BubbaBot, a friendly portfolio assistant for Pauline. Answer questions using ONLY the context provided below. Always respond in first person, warmly, casually but clearly - keep responses to 2-3 sentences maximum. CONTEXT:${context}`,
-            },
-            {
-              role: "user",
-              content: question,
-            },
-          ],
-          max_tokens: 150,
-          temperature: 0.5,
-          top_p: 0.9,
-          repetition_penalty: 1.1,
-        });
+        try {
+          const response = await client.chatCompletion({
+            model: process.env.LLM_MAIN_MODEL,
+            messages: [
+              {
+                role: "system",
+                content: `You are BubbaBot, a friendly portfolio assistant for Pauline. Answer questions using ONLY the context provided below. Always respond in first person, warmly, casually but clearly - keep responses to 2-3 sentences maximum. CONTEXT:${context}`,
+              },
+              {
+                role: "user",
+                content: question,
+              },
+            ],
+            max_tokens: 150,
+            temperature: 0.5,
+            top_p: 0.9,
+            repetition_penalty: 1.1,
+          });
 
-        const answer =
-          response.choices?.[0]?.message?.content?.trim() ||
-          "Sorry, I couldn't generate a response.";
+          const answer =
+            response.choices?.[0]?.message?.content?.trim() ||
+            "Sorry, I couldn't generate a response.";
 
-        // Langfuse: Update observation output
-        updateActiveObservation({
-          output: answer,
-        });
+          // Langfuse: Update observation output
+          updateActiveObservation({
+            output: answer,
+          });
 
-        // Langfuse: Update trace output
-        updateActiveTrace({
-          output: answer,
-        });
+          // Langfuse: Update trace output
+          updateActiveTrace({
+            output: answer,
+          });
 
-        return {
-          statusCode: 200,
-          headers,
-          body: JSON.stringify({ answer }),
-        };
+          return {
+            statusCode: 200,
+            headers,
+            body: JSON.stringify({ answer }),
+          };
+        } catch (apiError: any) {
+          // Handle 402 Payment Required error specifically
+          if (apiError.httpResponse?.status === 402) {
+            const creditsExhaustedMessage =
+              "Oops! I've run out of my monthly chat credits. 😅 Please reach out to Pauline directly at pholm@tuta.io and she'll get back to you soon!";
+
+            console.error("HuggingFace credits exhausted:", apiError.message);
+
+            // Log to Langfuse
+            updateActiveObservation({
+              output: creditsExhaustedMessage,
+              metadata: {
+                error: "credits_exhausted",
+                statusCode: 402,
+              },
+            });
+
+            updateActiveTrace({
+              output: creditsExhaustedMessage,
+              metadata: {
+                error: "credits_exhausted",
+                statusCode: 402,
+              },
+            });
+
+            return {
+              statusCode: 200, // Return 200 so the frontend displays the message normally
+              headers,
+              body: JSON.stringify({ answer: creditsExhaustedMessage }),
+            };
+          }
+
+          // Re-throw other API errors to be caught by outer catch
+          throw apiError;
+        }
       }
 
       // Handle feedback submission (happens after response is complete)

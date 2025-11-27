@@ -56,7 +56,7 @@ const BubbaMsg = ({
       <div
         className={`chat-bubble ${
           isBubba ? "chat-bubble-primary" : "chat-bubble-secondary"
-        }`}
+        } min-w-[400px] max-w-[min(80%,800px)]`}
       >
         {isBubba ? (
           <ReactMarkdown
@@ -103,7 +103,7 @@ const BubbaMsg = ({
         messageId &&
         conversationId &&
         onFeedbackSubmit && (
-          <div className="chat-footer mt-1">
+          <div className="chat-footer mt-2.5">
             <BubbaFeedback
               messageId={messageId}
               conversationId={conversationId}

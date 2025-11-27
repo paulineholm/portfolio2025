@@ -64,56 +64,55 @@ const BubbaFeedback = ({
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => handleRatingClick("positive")}
-            className={`btn btn-ghost btn-xs ${
-              selectedRating === "positive"
-                ? "text-success"
-                : "text-primary-content/60 hover:text-success"
-            }`}
-            title="Good response"
-          >
-            <PiThumbsUpThin className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => handleRatingClick("negative")}
-            className={`btn btn-ghost btn-xs ${
-              selectedRating === "negative"
-                ? "text-error"
-                : "text-primary-content/60 hover:text-error"
-            }`}
-            title="Poor response"
-          >
-            <PiThumbsDownThin className="w-5 h-5" />
-          </button>
-        </div>
-        <p className="text-xs text-primary-content/60">
-          Providing Bubba with feedback makes him a better bot
-        </p>
+    <div className="flex items-center gap-2 w-full">
+      <div className="flex items-center gap-1 shrink-0">
+        <button
+          onClick={() => handleRatingClick("positive")}
+          className={`btn btn-ghost btn-xs ${
+            selectedRating === "positive"
+              ? "text-success"
+              : "text-primary-content/60 hover:text-success"
+          }`}
+          title="Good response"
+        >
+          <PiThumbsUpThin className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => handleRatingClick("negative")}
+          className={`btn btn-ghost btn-xs ${
+            selectedRating === "negative"
+              ? "text-error"
+              : "text-primary-content/60 hover:text-error"
+          }`}
+          title="Poor response"
+        >
+          <PiThumbsDownThin className="w-5 h-5" />
+        </button>
       </div>
 
-      {showCommentInput && (
-        <div className="flex items-center gap-2 mt-1">
+      {!showCommentInput ? (
+        <p className="text-xs text-primary-content/60 flex-1">
+          Providing Bubba with feedback helps to make him a better assistant!
+        </p>
+      ) : (
+        <>
           <input
             type="text"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             onKeyPress={handleCommentKeyPress}
-            placeholder="Add a comment (optional)"
-            className="input input-xs input-bordered bg-primary-content/10 text-primary-content placeholder:text-primary-content/50 flex-1 text-xs"
+            placeholder="Supply your feedback with a comment (optional)"
+            className="input input-xs input-bordered bg-primary-content/10 text-primary-content placeholder:text-primary-content/50 flex-1 min-w-[40vw] text-xs"
             maxLength={200}
           />
           <button
             onClick={handleSubmit}
-            className="btn btn-ghost btn-xs text-primary-content/80 hover:text-primary-content"
+            className="btn btn-ghost btn-xs text-primary-content/80 hover:text-primary-content shrink-0"
             title="Submit feedback"
           >
             <PiPaperPlaneRightFill className="w-4 h-4" />
           </button>
-        </div>
+        </>
       )}
     </div>
   );

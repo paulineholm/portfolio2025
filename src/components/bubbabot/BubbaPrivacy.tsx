@@ -12,11 +12,23 @@ const BubbaPrivacy = () => {
           experience, your messages, including timezone information and locale,
           may be processed by third-party services like{" "}
           <ins>
-            <a href="https://huggingface.co/terms-of-service">HuggingFace</a>
+            <a
+              href="https://huggingface.co/terms-of-service"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              HuggingFace
+            </a>
           </ins>{" "}
           or{" "}
           <ins>
-            <a href="https://langfuse.com/privacy">Langfuse</a>
+            <a
+              href="https://langfuse.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Langfuse
+            </a>
           </ins>
           . No personal data is stored or shared beyond this scope.
           <br />

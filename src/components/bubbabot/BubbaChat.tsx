@@ -22,12 +22,25 @@ const INITIAL_MESSAGE: Message = {
   timestamp: new Date(),
 };
 
-const SUGGESTED_QUESTIONS = [
+const ALL_SUGGESTED_QUESTIONS = [
   "How is Pauline as a team player, how is she with her colleagues?",
   "Tell me about her professional experience and education",
   "What's her master thesis about? When did she graduate?",
   "Tell me something special about her",
+  "What's the tech stack she works within'?",
+  "What kind of projects has she built?",
+  "What are her key strengths as a developer?",
+  "What's her approach to problem-solving?",
+  "How does she stay updated with new technologies?",
+  "What makes her stand out as a developer?",
+  "Can you tell me about her soft skills and personality?",
 ];
+
+// Function to get 4 random questions from the pool
+const getRandomQuestions = (count: number = 4): string[] => {
+  const shuffled = [...ALL_SUGGESTED_QUESTIONS].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+};
 
 const STORAGE_KEY = "bubbabot_chat_history";
 const SUGGESTIONS_KEY = "bubbabot_suggestions_shown";
@@ -37,6 +50,7 @@ const BubbaChat = ({ onPrivacyClick }: BubbaChatProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [displayedQuestions] = useState<string[]>(() => getRandomQuestions());
   const [lastRequestTime, setLastRequestTime] = useState<number>(0);
   const [conversationId] = useState<string>(
     () => `conv-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`
@@ -272,7 +286,7 @@ const BubbaChat = ({ onPrivacyClick }: BubbaChatProps) => {
               <div className="flex flex-col gap-2 mt-4">
                 <p className="text-sm text-gray-600 font-medium">Try asking:</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {SUGGESTED_QUESTIONS.map((question, index) => (
+                  {displayedQuestions.map((question, index) => (
                     <button
                       key={index}
                       onClick={() => handleSuggestionClick(question)}

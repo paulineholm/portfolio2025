@@ -284,13 +284,17 @@ const BubbaChat = ({ onPrivacyClick }: BubbaChatProps) => {
 
             {showSuggestions && !isLoading && (
               <div className="flex flex-col gap-2 mt-4">
-                <p className="text-sm text-gray-600 font-medium">Try asking:</p>
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                  Try asking:
+                </p>
                 <div className="grid grid-cols-1 gap-2">
                   {displayedQuestions.map((question, index) => (
                     <button
                       key={index}
                       onClick={() => handleSuggestionClick(question)}
-                      className="text-left px-4 py-2 bg-white hover:bg-primary hover:text-primary-content rounded-lg border border-primary/20 transition-all text-sm shadow-sm hover:shadow-md"
+                      className={`text-left px-4 py-2 bg-white hover:bg-primary hover:text-primary-content rounded-lg border border-primary/20 transition-all text-xs sm:text-sm shadow-sm hover:shadow-md ${
+                        index >= 2 ? "hidden md:block" : ""
+                      }`}
                     >
                       {question}
                     </button>

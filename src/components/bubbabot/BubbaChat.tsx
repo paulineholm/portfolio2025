@@ -285,7 +285,7 @@ const BubbaChat = ({ onPrivacyClick }: BubbaChatProps) => {
             {showSuggestions && !isLoading && (
               <div className="flex flex-col gap-2 mt-4">
                 <p className="text-sm text-gray-600 font-medium">Try asking:</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 gap-2">
                   {displayedQuestions.map((question, index) => (
                     <button
                       key={index}

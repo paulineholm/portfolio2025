@@ -56,7 +56,7 @@ const BubbaMsg = ({
       <div
         className={`chat-bubble ${
           isBubba ? "chat-bubble-primary" : "chat-bubble-secondary"
-        } min-w-[400px] max-w-[min(80%,800px)]`}
+        } max-w-[95%] md:min-w-[400px] md:max-w-[min(80%,800px)] text-sm md:text-base`}
       >
         {isBubba ? (
           <ReactMarkdown

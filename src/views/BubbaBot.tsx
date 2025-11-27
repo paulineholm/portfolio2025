@@ -40,7 +40,7 @@ const BubbaBot = () => {
           </p>
         </div>
 
-        <section className="w-[80%] max-w-[1200px] mx-auto my-[5dvh]">
+        <section className="w-[95%] sm:w-[90%] md:w-[85%] max-w-[1200px] mx-auto my-[5dvh] px-2 sm:px-0">
           <BubbaChat onPrivacyClick={scrollToPrivacy} />
         </section>
         <section

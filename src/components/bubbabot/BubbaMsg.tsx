@@ -1,14 +1,32 @@
 import type { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
+import BubbaFeedback from "./BubbaFeedback";
 
 interface BubbaMsgProps {
   message: string;
   sender: "bubba" | "user";
   timeStamp?: Date;
+  messageId?: string;
+  conversationId?: string;
+  onFeedbackSubmit?: (
+    messageId: string,
+    feedback: {
+      rating: "positive" | "negative";
+      comment?: string;
+    }
+  ) => void;
 }
 
-const BubbaMsg = ({ message, sender, timeStamp }: BubbaMsgProps) => {
+const BubbaMsg = ({
+  message,
+  sender,
+  timeStamp,
+  messageId,
+  conversationId,
+  onFeedbackSubmit,
+}: BubbaMsgProps) => {
   const isBubba = sender === "bubba";
+  const isInitialMessage = messageId === "1";
 
   return (
     <div className={`chat ${isBubba ? "chat-start" : "chat-end"}`}>
@@ -38,7 +56,7 @@ const BubbaMsg = ({ message, sender, timeStamp }: BubbaMsgProps) => {
       <div
         className={`chat-bubble ${
           isBubba ? "chat-bubble-primary" : "chat-bubble-secondary"
-        }`}
+        } min-w-[400px] max-w-[min(80%,800px)]`}
       >
         {isBubba ? (
           <ReactMarkdown
@@ -79,6 +97,19 @@ const BubbaMsg = ({ message, sender, timeStamp }: BubbaMsgProps) => {
           <div className="whitespace-pre-wrap">{message}</div>
         )}
       </div>
+
+      {isBubba &&
+        !isInitialMessage &&
+        messageId &&
+        conversationId &&
+        onFeedbackSubmit && (
+          <div className="chat-footer mt-2.5">
+            <BubbaFeedback
+              messageId={messageId}
+              onFeedbackSubmit={onFeedbackSubmit}
+            />
+          </div>
+        )}
     </div>
   );
 };

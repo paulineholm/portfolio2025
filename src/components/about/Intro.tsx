@@ -66,11 +66,8 @@ const Intro = () => {
           <h3 className="pt-7 pb-1.5 max-md:text-xs">
             <i>scroll to get to know me better</i>
           </h3>
-          <Link
-            to="/projects"
-            className="text-[var(--color-negev)] hover:text-[var(--color-freshLime)]"
-          >
-            or see my projects
+          <Link to="/bubbabot" className="text-negev hover:text-freshLime">
+            or chat with Bubba 🤖 about me
           </Link>
           <br />
           <br />

@@ -1,8 +1,6 @@
 import "./instrumentation";
 import type { Handler } from "@netlify/functions";
 import { InferenceClient } from "@huggingface/inference";
-import axios from "axios";
-import * as cheerio from "cheerio";
 import {
   observe,
   updateActiveTrace,
@@ -16,9 +14,14 @@ import { masterthesisContext } from "../../src/assets/data/context/masterthesis"
 import { generalContext } from "../../src/assets/data/context/general";
 import { professionalContext } from "../../src/assets/data/context/professional";
 import { personalityContext } from "../../src/assets/data/context/personality";
+import { fullTestimonials } from "../../src/assets/data/context/fullTestimonials";
 import { cv } from "../../src/assets/data/context/cv";
 
 const buildStaticContext = () => {
+  const resourceLinks = PUBLIC_RESOURCES.map(
+    (resource) => `${resource.name}: ${resource.url}`
+  ).join("\n");
+
   return `
     Master Thesis Context: ${masterthesisContext}
     General Context: ${generalContext}
@@ -26,74 +29,12 @@ const buildStaticContext = () => {
     Contact Context: ${contactContext}
     Personality Context: ${personalityContext}
     CV Context: Name: ${cv.name}, LinkedIn: ${cv.linkedin}, Summary: ${cv.summary.description}, Email: ${cv.email}, Role: ${cv.summary.role}
+    Testimonials Context: ${fullTestimonials}
+
+    === AVAILABLE LINKS ===
+    ${resourceLinks}
   `.trim();
 };
-
-// Simple cache
-const cache: Record<string, { content: string; timestamp: number }> = {};
-const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
-
-// Fetch content from URL
-async function fetchUrl(url: string): Promise<string | null> {
-  // Check cache
-  const cached = cache[url];
-  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-    console.log(`Cache hit: ${url}`);
-    return cached.content;
-  }
-
-  try {
-    console.log(`Fetching: ${url}`);
-    const { data } = await axios.get(url, { timeout: 5000 });
-    const $ = cheerio.load(data);
-
-    $("script, style, nav, footer").remove();
-
-    const content = $("h1, h2, h3, p, li")
-      .map((_, el) => $(el).text())
-      .get()
-      .join(" ")
-      .replace(/\s+/g, " ")
-      .trim()
-      .slice(0, 1500);
-
-    cache[url] = { content, timestamp: Date.now() };
-    return content;
-  } catch (err) {
-    console.warn(`Failed to fetch ${url}`);
-    return null;
-  }
-}
-
-// Build context with dynamic fetching
-async function buildContext(question: string) {
-  const staticContext = buildStaticContext();
-
-  // Find relevant resources
-  const questionLower = question.toLowerCase();
-  const relevantResources = PUBLIC_RESOURCES.filter((resource) =>
-    resource.keywords.some((keyword) => questionLower.includes(keyword))
-  );
-
-  if (relevantResources.length === 0) {
-    return staticContext;
-  }
-
-  console.log(`Found ${relevantResources.length} relevant resources`);
-
-  // Fetch content from relevant resources
-  const fetchPromises = relevantResources.map((r) => fetchUrl(r.url));
-  const contents = await Promise.all(fetchPromises);
-
-  const dynamicContext = contents
-    .filter((content) => content !== null)
-    .map((content, i) => `[${relevantResources[i].name}]: ${content}`)
-    .join("\n\n");
-
-  return dynamicContext
-    ? `${staticContext}\n\n=== LIVE INFO ===\n${dynamicContext}`
-    : staticContext;
-}
 
 export const handler: Handler = observe(
   async (event) => {
@@ -152,8 +93,8 @@ export const handler: Handler = observe(
 
         const client = new InferenceClient(process.env.HUGGINGFACE_API_KEY);
 
-        // Build context dynamically based on question
-        const context = await buildContext(question);
+        // Build static context only - no dynamic fetching
+        const context = buildStaticContext();
 
         try {
           const response = await client.chatCompletion({
@@ -161,7 +102,7 @@ export const handler: Handler = observe(
             messages: [
               {
                 role: "system",
-                content: `You are BubbaBot, a friendly portfolio assistant for Pauline. Answer questions using ONLY the context provided below. Always respond in first person, warmly, casually but clearly - keep responses to 2-3 sentences maximum. CONTEXT:${context}`,
+                content: `You are BubbaBot, a friendly portfolio assistant for Pauline. Answer questions using ONLY the context provided below. Always respond in first person, warmly, casually but clearly - keep responses to 2-3 sentences maximum. When relevant, you can share links from the AVAILABLE LINKS section. CONTEXT: ${context}`,
               },
               {
                 role: "user",
@@ -222,6 +163,20 @@ export const handler: Handler = observe(
               statusCode: 200, // Return 200 so the frontend displays the message normally
               headers,
               body: JSON.stringify({ answer: creditsExhaustedMessage }),
+            };
+          }
+
+          // Handle 500 server errors
+          if (apiError.httpResponse?.status === 500) {
+            console.error("HuggingFace server error:", apiError.message);
+
+            const errorMessage =
+              "I'm having trouble processing that question right now. Could you try rephrasing it or asking something more specific? 🤔";
+
+            return {
+              statusCode: 200,
+              headers,
+              body: JSON.stringify({ answer: errorMessage }),
             };
           }
 

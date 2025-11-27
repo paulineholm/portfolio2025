@@ -64,7 +64,7 @@ export const Hero = () => {
         </p>
         <a
           href="https://paulineholm.netlify.app/cv_pholm_itgirl2025.pdf"
-          className="mt-25 font-serif text-[4dvw] text-[var(--color-thina)] hover:text-black transition-colors lg:text-[1.5dvw]"
+          className="mt-25 font-serif text-[4dvw] text-thina hover:text-black transition-colors lg:text-[1.5dvw]"
         >
           &lt;resume /&gt;
         </a>

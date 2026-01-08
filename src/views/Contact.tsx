@@ -48,7 +48,7 @@ const Contact = () => {
             </a>{" "}
             /{" "}
             <a
-              href="https://paulineholm.netlify.app/cv_pholm_itgirl2025.pdf"
+              href="https://paulineholm.netlify.app/cv_pholm_itgirl2026.pdf"
               className="hover:text-freshLime"
             >
               &lt;resume /&gt;

@@ -1,45 +1,61 @@
 import { FaReact, FaNpm, FaNode, FaFigma } from "react-icons/fa";
-import { SiGithubactions, SiGithubcopilot, SiVite } from "react-icons/si";
-import { RiNextjsFill } from "react-icons/ri";
 import {
-  BiLogoTypescript,
-  BiLogoJavascript,
-  BiLogoHtml5,
-  BiLogoCss3,
-  BiLogoTailwindCss,
-} from "react-icons/bi";
+  SiGithubactions,
+  SiJfrog,
+  SiVite,
+  SiContentful,
+  SiVercel,
+  SiNetlify,
+  SiCypress,
+  SiClaude,
+  SiJira,
+  SiNotion,
+  SiConfluence,
+  SiHuggingface,
+} from "react-icons/si";
+import { RiNextjsFill } from "react-icons/ri";
+import { BiLogoTypescript, BiLogoTailwindCss } from "react-icons/bi";
 import {
   AiOutlineKubernetes,
   AiOutlineDotNet,
   AiOutlineDocker,
 } from "react-icons/ai";
+import { CgCPlusPlus } from "react-icons/cg";
 
 const TechStack = () => {
   return (
     <section className="w-screen text-center tracking-wide my-[7dvh] px-[4vw]">
       <div className="text-[6.5dvh] flex flex-wrap justify-center gap-6 pb-5">
-        <FaReact className="inline" />
-        <RiNextjsFill className="inline" />
-        <SiVite className="inline" />
-        <BiLogoCss3 className="inline" />
-        <BiLogoTailwindCss className="inline" />
-        <BiLogoHtml5 className="inline" />
-        <BiLogoTypescript className="inline" />
-        <BiLogoJavascript className="inline" />
-        <FaNpm className="inline" />
-        <FaNode className="inline" />
-        <SiGithubactions className="inline" />
-        <SiGithubcopilot className="inline" />
-        <AiOutlineKubernetes className="inline" />
-        <AiOutlineDotNet className="inline" />
-        <AiOutlineDocker className="inline" />
-        <FaFigma className="inline" />
+        <FaReact />
+        <RiNextjsFill />
+        <SiVite />
+        <BiLogoTailwindCss />
+        <BiLogoTypescript />
+        <FaNpm />
+        <FaNode />
+        <SiGithubactions />
+        <SiJfrog />
+        <AiOutlineKubernetes />
+        <AiOutlineDotNet />
+        <CgCPlusPlus />
+        <AiOutlineDocker />
+        <SiContentful />
+        <SiVercel />
+        <SiNetlify />
+        <SiCypress />
+        <SiClaude />
+        <SiHuggingface />
+        <SiJira />
+        <SiConfluence />
+        <SiNotion />
+        <FaFigma />
       </div>
       <div className="text-[1.75dvh] mt-2">
         <p>
-          In human language: React, Next.js, Vite, CSS, Tailwind, HTML,
-          TypeScript, JavaScript, npm, Node.js, GitHub Actions, GitHub Copilot,
-          Kubernetes, .NET, Docker, Figma
+          Tech & tools in human language: React, Next.js, Vite, Tailwind,
+          TypeScript, npm, Node.js, GitHub Actions, JFrog, Kubernetes, .NET,
+          C++,Docker, Contentful, Vercel, Netlify, Cypress, Claude, HuggingFace,
+          Jira, Confluence, Notion, Figma + Tuta & Cursor
         </p>
       </div>
     </section>
